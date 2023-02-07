@@ -1,5 +1,5 @@
 package objetos;
 
-public class GestorBBDD {
-
+public class GestorBBDD extends Conector {
+	
 }
