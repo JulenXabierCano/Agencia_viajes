@@ -2,61 +2,79 @@ package objetos;
 
 public class Hotel {
 
-	private String dni;
+	private int id;
+	private String cif;
 	private String nombre;
-	private String apellidos;
-	private String direccion;
-	private String localidad;
-	
-	public String getDni() {
-		return dni;
+	private String gerente;
+	private int estrellas;
+	private String compania;
+
+	public int getId() {
+		return id;
 	}
-	public void setDni(String dni) {
-		this.dni = dni;
+
+	public void setId(int id) {
+		this.id = id;
 	}
+
+	public String getCif() {
+		return cif;
+	}
+
+	public void setCif(String cif) {
+		this.cif = cif;
+	}
+
 	public String getNombre() {
 		return nombre;
 	}
+
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public String getApellidos() {
-		return apellidos;
+
+	public String getGerente() {
+		return gerente;
 	}
-	public void setApellidos(String apellidos) {
-		this.apellidos = apellidos;
+
+	public void setGerente(String gerente) {
+		this.gerente = gerente;
 	}
-	public String getDireccion() {
-		return direccion;
+
+	public int getEstrellas() {
+		return estrellas;
 	}
-	public void setDireccion(String direccion) {
-		this.direccion = direccion;
+
+	public void setEstrellas(int estrellas) {
+		this.estrellas = estrellas;
 	}
-	public String getLocalidad() {
-		return localidad;
+
+	public String getCompania() {
+		return compania;
 	}
-	public void setLocalidad(String localidad) {
-		this.localidad = localidad;
+
+	public void setCompania(String compania) {
+		this.compania = compania;
 	}
-	
-	public Hotel(String dni, String nombre, String apellidos, String direccion, String localidad) {
+
+	public Hotel(int id, String cif, String nombre, String gerente, int estrellas, String compania) {
 		super();
-		this.dni = dni;
+		this.id = id;
+		this.cif = cif;
 		this.nombre = nombre;
-		this.apellidos = apellidos;
-		this.direccion = direccion;
-		this.localidad = localidad;
+		this.gerente = gerente;
+		this.estrellas = estrellas;
+		this.compania = compania;
 	}
-	
+
 	public Hotel() {
-		
+
 	}
+
 	@Override
 	public String toString() {
-		return "Hotel [dni=" + dni + ", nombre=" + nombre + ", apellidos=" + apellidos + ", direccion=" + direccion
-				+ ", localidad=" + localidad + "]";
+		return "Hotel [id=" + id + ", cif=" + cif + ", nombre=" + nombre + ", gerente=" + gerente + ", estrellas="
+				+ estrellas + ", compania=" + compania + "]";
 	}
-	
-	
-	
+
 }
