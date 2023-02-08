@@ -65,7 +65,7 @@ public class FormularioDeDatos {
 	
 	public Reserva datosReserva(Scanner scan) {
 		Reserva reserva = new Reserva();
-		
+//		Verificar disponibilidad de habitaciones antes de crear la reserva
 		return reserva;
 	}
 }

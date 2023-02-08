@@ -6,5 +6,6 @@ public class GestorReservas {
 
 	public static void Run(Scanner scan) {
 		
+		
 	}
 }
