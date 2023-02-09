@@ -17,6 +17,7 @@ public class GestorBBDD extends Conector {
 			System.out.println("Error: no se ha podido crear la reserva");
 		}
 	}
+
 	public void crearCliente(Cliente cliente) {
 		try {
 			PreparedStatement crearCliente = conector
@@ -31,4 +32,23 @@ public class GestorBBDD extends Conector {
 			System.out.println("Error: no se ha podido registrar el cliente");
 		}
 	}
+
+	public void crearHotel(Hotel hotel) {
+		PreparedStatement crearHotel;
+		try {
+			crearHotel = conector
+					.prepareStatement("INSERT INTO reservas (cif,nombre,gerente,estrellas, compania) VALUES (?,?,?,?,?)");
+			crearHotel.setString(1, hotel.getCif());
+			crearHotel.setString(2, hotel.getNombre());
+			crearHotel.setString(3, hotel.getGerente());
+			crearHotel.setInt(4, hotel.getEstrellas());
+			crearHotel.setString(5, hotel.getCompania());
+			
+			crearHotel.execute();
+		} catch (SQLException e) {
+			System.out.println("Error al crear hotel " + e);
+		}
+	}
+
+
 }

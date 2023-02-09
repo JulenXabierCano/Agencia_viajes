@@ -7,14 +7,13 @@ import objetos.*;
 
 public class GestorAgencia {
 	public void Run() {
+		
 		Scanner scan = new Scanner(System.in);
-		//preparar menu principal
-		GestorBBDD gestorBBDD = new GestorBBDD();
 		int opcion_menu = 0;
 		
 		Menu.menuPrincipal();
 		System.out.println("¿A que gestor quiere acceder?");
-		opcion_menu = scan.nextInt();
+		opcion_menu = Integer.parseInt(scan.nextLine());
 		
 		do {
 		

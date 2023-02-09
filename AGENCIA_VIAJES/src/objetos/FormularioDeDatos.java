@@ -3,7 +3,7 @@ package objetos;
 import java.util.Scanner;
 
 public class FormularioDeDatos {
-	public Hotel datosHoteles(Scanner scan) {
+	public static Hotel datosHoteles(Scanner scan) {
 		Hotel hotel = new Hotel();
 		
 		System.out.println("Introduzca CIF del hotel:");
