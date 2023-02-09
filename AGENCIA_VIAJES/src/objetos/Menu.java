@@ -1,6 +1,5 @@
 package objetos;
 
-import java.util.Scanner;
 
 public class Menu {
 	
@@ -20,13 +19,12 @@ public class Menu {
 	public static final int ALTA_HABITACION = 2;
 	
 	public static void menuPrincipal() {
-
-			System.out.println("Menú:");
-			System.out.println(GESTOR_CLIENTES+".	Gestionar Clientes");
-			System.out.println(GESTOR_RESERVAS+".	Gestionar Reservas");
-			System.out.println(GESTOR_HOTELYHABITACIONES+".	Gestionar Hoteles y Habitaciones");
-			System.out.println(SALIR+".	Salir");
-			
+		System.out.println("Menú:");
+		System.out.println(GESTOR_CLIENTES+".	Gestionar Clientes");
+		System.out.println(GESTOR_RESERVAS+".	Gestionar Reservas");
+		System.out.println(GESTOR_HOTELYHABITACIONES+".	Gestionar Hoteles y Habitaciones");
+		System.out.println(SALIR+".	Salir");
+		
 	}
 	
 	public static void menuClientes() {

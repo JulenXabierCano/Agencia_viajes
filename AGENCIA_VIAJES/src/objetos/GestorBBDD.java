@@ -17,4 +17,18 @@ public class GestorBBDD extends Conector {
 			System.out.println("Error: no se ha podido crear la reserva");
 		}
 	}
+	public void crearCliente(Cliente cliente) {
+		try {
+			PreparedStatement crearCliente = conector
+					.prepareStatement("INSERT INTO clientes (dni,nombre,apellidos,direccion,localidad) VALUES (?,?,?,?,?)");
+			crearCliente.setString(1, cliente.getDni());
+			crearCliente.setString(2, cliente.getNombre());
+			crearCliente.setString(3, cliente.getApellidos());
+			crearCliente.setString(4, cliente.getDireccion());
+			crearCliente.setString(5, cliente.getLocalidad());
+			crearCliente.execute();
+		} catch (SQLException e) {
+			System.out.println("Error: no se ha podido registrar el cliente");
+		}
+	}
 }
