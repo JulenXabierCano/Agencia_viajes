@@ -18,5 +18,6 @@ public class GestorReservas {
 			
 		}while (opcion_menu != Menu.SALIR);
 	
+
 	}
 }

@@ -16,7 +16,8 @@ public class Menu {
 	public static final int RESERVAR = 1;
 	public static final int CANCELAR = 2;
 	
-	
+	public static final int ALTA_HOTEL = 1;
+	public static final int ALTA_HABITACION = 2;
 	
 	public static void menuPrincipal() {
 
@@ -28,7 +29,7 @@ public class Menu {
 			
 	}
 	
-	static void menuClientes() {
+	public static void menuClientes() {
 		System.out.println("Menú:");
 		System.out.println(ALTA_CLIENTE+".	Alta a Cliente");
 		System.out.println(ELIMINAR_CLIENTE+".	Baja a Cliente");
@@ -36,15 +37,17 @@ public class Menu {
 		System.out.println(SALIR+".	Salir");
 	}
 	
-	static void menuReservas() {
+	public static void menuReservas() {
 		System.out.println("Menú:");
 		System.out.println(RESERVAR+".	Realizar una reserva");
 		System.out.println(CANCELAR+".	Cancelar reserva");
 		System.out.println(SALIR+".	Salir");
 	}
 	
-	static void menuHotelHabitaciones() {
+	public static void menuHotelHabitaciones() {
 		System.out.println("Menú:");
-		System.out.println("");
+		System.out.println(ALTA_HOTEL+".	Dar de Alta un Hotel");
+		System.out.println(ALTA_HABITACION+".	Añadir una Habitación");
+		System.out.println(SALIR+".	Salir");
 	}
 }
