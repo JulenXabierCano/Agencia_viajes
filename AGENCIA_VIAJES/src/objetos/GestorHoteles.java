@@ -15,7 +15,6 @@ public class GestorHoteles {
 		switch (opcion_menu) {
 		
 		
-//			Esperando al menu
 		
 		}
 			

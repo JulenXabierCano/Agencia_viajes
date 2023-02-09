@@ -12,6 +12,10 @@ public class GestorAgencia {
 		GestorBBDD gestorBBDD = new GestorBBDD();
 		int opcion_menu = 0;
 		
+		Menu.menuPrincipal();
+		System.out.println("¿A que gestor quiere acceder?");
+		opcion_menu = scan.nextInt();
+		
 		do {
 		
 			switch(opcion_menu) {
