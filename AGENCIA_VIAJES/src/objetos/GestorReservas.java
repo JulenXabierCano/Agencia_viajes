@@ -5,19 +5,24 @@ import java.util.Scanner;
 public class GestorReservas {
 
 	public static void Run(Scanner scan) {
-		
+
 		int opcion_menu = 0;
 		do {
-			System.out.println("Esperando para el menu");
-			opcion_menu = scan.nextInt();
-			
-		switch (opcion_menu) {
-		
+			Menu.menuReservas();
+			opcion_menu = Integer.parseInt(scan.nextLine());
+
+			switch (opcion_menu) {
+			case Menu.RESERVAR:
+				GestorBBDD bbdd = new GestorBBDD();
+				bbdd.conectar();
+				bbdd.crearReserva(FormularioDeDatos.datosReserva(scan));
+				break;
 				
-		}
-			
-		}while (opcion_menu != Menu.SALIR);
-	
+			case Menu.CANCELAR:
+				break;
+			}
+
+		} while (opcion_menu != Menu.SALIR);
 
 	}
 }

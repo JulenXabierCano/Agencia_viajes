@@ -2,6 +2,7 @@ package objetos;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.Date;
 
 public class GestorBBDD extends Conector {
 	public void crearReserva(Reserva reserva) {
@@ -10,11 +11,11 @@ public class GestorBBDD extends Conector {
 					.prepareStatement("INSERT INTO reservas (id_habitacion,dni,desde,hasta) VALUES (?,?,?,?)");
 			crearReserva.setInt(1, reserva.getId_habitacion());
 			crearReserva.setString(2, reserva.getDni());
-			crearReserva.setString(3, reserva.getDesde());
-			crearReserva.setString(4, reserva.getHasta());
+			crearReserva.setDate(3, reserva.getDesde());
+			crearReserva.setDate(4, reserva.getHasta());
 			crearReserva.execute();
 		} catch (SQLException e) {
-			System.out.println("Error: no se ha podido crear la reserva");
+			System.out.println("Error: no se ha podido crear la reserva " + e);
 		}
 	}
 }

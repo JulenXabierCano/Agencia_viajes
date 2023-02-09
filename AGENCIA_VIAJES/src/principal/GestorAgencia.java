@@ -14,7 +14,7 @@ public class GestorAgencia {
 		
 		Menu.menuPrincipal();
 		System.out.println("¿A que gestor quiere acceder?");
-		opcion_menu = scan.nextInt();
+		opcion_menu = Integer.parseInt(scan.nextLine());
 		
 		do {
 		

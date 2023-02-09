@@ -1,5 +1,8 @@
 package objetos;
 
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Scanner;
 
 public class FormularioDeDatos {
@@ -63,7 +66,9 @@ public class FormularioDeDatos {
 		return cliente;
 	}
 	
-	public Reserva datosReserva(Scanner scan) {
+	public static Reserva datosReserva(Scanner scan) {
+		SimpleDateFormat format = new SimpleDateFormat("DD/MM/YYYY");
+		
 		Reserva reserva = new Reserva();
 		
 		System.out.println("Introduzca ID de la habitacion:");
@@ -72,11 +77,15 @@ public class FormularioDeDatos {
 		System.out.println("Introduzca DNI del cliente:");
 		reserva.setDni(scan.nextLine());
 		
-		System.out.println("Introduzca fecha de inicio de reserva:");
-		reserva.setDesde(scan.nextLine());
-		
-		System.out.println("Introduzca fecha de final de reserva:");
-		reserva.setHasta(scan.nextLine());
+		try {
+			System.out.println("Introduzca fecha de inicio de reserva:");
+			reserva.setDesde((Date) format.parse(scan.nextLine()));
+			
+			System.out.println("Introduzca fecha de final de reserva:");
+			reserva.setHasta((Date) format.parse(scan.nextLine()));
+		} catch (ParseException e) {
+			System.out.println("Error: no se ha podido introducir la fecha " + e);
+		}
 		
 		return reserva;
 	}

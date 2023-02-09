@@ -1,12 +1,14 @@
 package objetos;
 
+import java.sql.Date;
+
 public class Reserva {
 
 	private int id;
 	private int id_habitacion;
 	private String dni;
-	private String desde;
-	private String hasta;
+	private Date desde;
+	private Date hasta;
 
 	public int getId() {
 		return id;
@@ -32,23 +34,23 @@ public class Reserva {
 		this.dni = dni;
 	}
 
-	public String getDesde() {
+	public Date getDesde() {
 		return desde;
 	}
 
-	public void setDesde(String desde) {
+	public void setDesde(Date desde) {
 		this.desde = desde;
 	}
 
-	public String getHasta() {
+	public Date getHasta() {
 		return hasta;
 	}
 
-	public void setHasta(String hasta) {
+	public void setHasta(Date hasta) {
 		this.hasta = hasta;
 	}
 
-	public Reserva(int id, int id_habitacion, String dni, String desde, String hasta) {
+	public Reserva(int id, int id_habitacion, String dni, Date desde, Date hasta) {
 		super();
 		this.id = id;
 		this.id_habitacion = id_habitacion;
