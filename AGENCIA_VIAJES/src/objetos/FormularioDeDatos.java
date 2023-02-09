@@ -6,7 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Scanner;
 
 public class FormularioDeDatos {
-	public Hotel datosHoteles(Scanner scan) {
+	public static Hotel datosHoteles(Scanner scan) {
 		Hotel hotel = new Hotel();
 		
 		System.out.println("Introduzca CIF del hotel:");
@@ -48,19 +48,15 @@ public class FormularioDeDatos {
 	public Cliente datosCliente(Scanner scan) {
 		Cliente cliente = new Cliente();
 		
-		System.out.println("Introduzca DNI del cliente");
+		System.out.println("Introduce el DNI");
 		cliente.setDni(scan.nextLine());
-		
-		System.out.println("Introduzca nombre del cliente");
+		System.out.println("Introduce nombre del Cliente");
 		cliente.setNombre(scan.nextLine());
-		
-		System.out.println("Introduzca apellidos del cliente");
+		System.out.println("Introduzca los Apellidos del registrado");
 		cliente.setApellidos(scan.nextLine());
-		
-		System.out.println("Introduzca direccion del cliente");
+		System.out.println("Introduce direccion del Cliente");
 		cliente.setDireccion(scan.nextLine());
-		
-		System.out.println("Introduzca localidad del cliente");
+		System.out.println("Introduce Localidad en la cual reside");
 		cliente.setLocalidad(scan.nextLine());
 		
 		return cliente;

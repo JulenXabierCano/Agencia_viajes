@@ -7,9 +7,8 @@ import objetos.*;
 
 public class GestorAgencia {
 	public void Run() {
+		
 		Scanner scan = new Scanner(System.in);
-		//preparar menu principal
-		GestorBBDD gestorBBDD = new GestorBBDD();
 		int opcion_menu = 0;
 		
 		Menu.menuPrincipal();
