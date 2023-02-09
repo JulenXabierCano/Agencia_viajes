@@ -45,7 +45,7 @@ public class FormularioDeDatos {
 	public Cliente datosCliente(Scanner scan) {
 		Cliente cliente = new Cliente();
 		
-		System.out.println("Introduzca localidad del cliente");
+		System.out.println("Introduzca DNI del cliente");
 		cliente.setDni(scan.nextLine());
 		
 		System.out.println("Introduzca nombre del cliente");
@@ -65,7 +65,19 @@ public class FormularioDeDatos {
 	
 	public Reserva datosReserva(Scanner scan) {
 		Reserva reserva = new Reserva();
-//		Verificar disponibilidad de habitaciones antes de crear la reserva
+		
+		System.out.println("Introduzca ID de la habitacion:");
+		reserva.setId_habitacion(Integer.parseInt(scan.nextLine()));
+		
+		System.out.println("Introduzca DNI del cliente:");
+		reserva.setDni(scan.nextLine());
+		
+		System.out.println("Introduzca fecha de inicio de reserva:");
+		reserva.setDesde(scan.nextLine());
+		
+		System.out.println("Introduzca fecha de final de reserva:");
+		reserva.setHasta(scan.nextLine());
+		
 		return reserva;
 	}
 }
