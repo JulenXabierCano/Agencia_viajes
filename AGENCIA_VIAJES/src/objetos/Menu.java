@@ -16,34 +16,16 @@ public class Menu {
 	public static final int RESERVAR = 1;
 	public static final int CANCELAR = 2;
 	
+	
+	
 	public static void menuPrincipal() {
-		Scanner scan = new Scanner(System.in);
-		Integer eleccion;
-		
-		do {	
+
 			System.out.println("Menú:");
 			System.out.println(GESTOR_CLIENTES+".	Gestionar Clientes");
 			System.out.println(GESTOR_RESERVAS+".	Gestionar Reservas");
 			System.out.println(GESTOR_HOTELYHABITACIONES+".	Gestionar Hoteles y Habitaciones");
 			System.out.println(SALIR+".	Salir");
 			
-			eleccion=Integer.parseInt(scan.nextLine());
-			
-			switch(eleccion) {
-			case GESTOR_CLIENTES:
-				break;
-			case GESTOR_RESERVAS:
-				break;
-			case GESTOR_HOTELYHABITACIONES:
-				break;
-			case SALIR:
-				System.out.println("Programa finalizado");
-				break;
-			default:
-				System.out.println("Opción inexistente");
-				break;
-			}
-		}while(eleccion!=SALIR);
 	}
 	
 	static void menuClientes() {
