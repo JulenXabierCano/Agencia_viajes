@@ -10,24 +10,23 @@ public class GestorHoteles {
 		
 		Hotel hotel = new Hotel();
 		int opcion_menu=0;
+		FormularioDeDatos fdd = new FormularioDeDatos();
 		GestorBBDD gestorBBDD = new GestorBBDD();
 		
-		System.out.println("¿Qué proceso quiere realizar?");
-		Menu.menuHotelHabitaciones();
-		
-		opcion_menu = Integer.parseInt(scan.nextLine());
 		
 		
 		do {
-			opcion_menu = scan.nextInt();
+			
+			Menu.menuHotelHabitaciones();
+			System.out.println("¿Qué proceso quiere realizar?");
+			opcion_menu = Integer.parseInt(scan.nextLine());
 			
 		switch (opcion_menu) {
 		
 		case Menu.ALTA_HOTEL:
 		
 			gestorBBDD.conectar();
-			hotel = FormularioDeDatos.datosHoteles(scan);
-			gestorBBDD.crearHotel(hotel);
+			gestorBBDD.crearHotel(FormularioDeDatos.datosHoteles(scan));
 			gestorBBDD.cerrar();
 		
 			System.out.println("Hotel creado");
