@@ -11,12 +11,11 @@ public class GestorAgencia {
 		Scanner scan = new Scanner(System.in);
 		int opcion_menu = 0;
 		
-		Menu.menuPrincipal();
-		System.out.println("¿A que gestor quiere acceder?");
-		opcion_menu = Integer.parseInt(scan.nextLine());
-		
 		do {
-		
+			Menu.menuPrincipal();
+			System.out.println("¿A que gestor quiere acceder?");
+			opcion_menu = Integer.parseInt(scan.nextLine());
+			
 			switch(opcion_menu) {
 			case Menu.GESTOR_CLIENTES:
 				GestorClientes.Run(scan);

@@ -28,8 +28,7 @@ public class GestorHoteles {
 			gestorBBDD.conectar();
 			gestorBBDD.crearHotel(FormularioDeDatos.datosHoteles(scan));
 			gestorBBDD.cerrar();
-		
-			System.out.println("Hotel creado");
+			
 		}
 			
 		}while (opcion_menu != Menu.SALIR);
