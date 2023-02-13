@@ -15,14 +15,14 @@ public class GestorReservas {
 			case Menu.RESERVAR:
 				GestorBBDD bbdd = new GestorBBDD();
 				bbdd.conectar();
-				bbdd.crearReserva(FormularioDeDatos.datosReserva(scan));
+				bbdd.crearReserva(FormularioDeDatos.datosReserva(scan),scan);
+				bbdd.cerrar();
 				break;
-				
+
 			case Menu.CANCELAR:
+				
 				break;
 			}
-
 		} while (opcion_menu != Menu.SALIR);
-
 	}
 }

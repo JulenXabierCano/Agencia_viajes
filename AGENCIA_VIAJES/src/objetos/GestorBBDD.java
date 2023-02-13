@@ -2,11 +2,19 @@ package objetos;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.Date;
+import java.util.Scanner;
 
 public class GestorBBDD extends Conector {
-	public void crearReserva(Reserva reserva) {
+	public void crearReserva(Reserva reserva, Scanner scan) {
 		try {
+			PreparedStatement selectCliente = conector.prepareStatement("SELECT * FROM clientes WHERE dni=?");
+			System.out.println("Introduzca DNI del cliente");
+			String dni = scan.nextLine();
+			selectCliente.setString(1, dni);
+			if (selectCliente.execute()) {
+				System.out.println();
+			}
+
 			PreparedStatement crearReserva = conector
 					.prepareStatement("INSERT INTO reservas (id_habitacion,dni,desde,hasta) VALUES (?,?,?,?)");
 			crearReserva.setInt(1, reserva.getId_habitacion());
@@ -15,14 +23,15 @@ public class GestorBBDD extends Conector {
 			crearReserva.setDate(4, reserva.getHasta());
 			crearReserva.execute();
 		} catch (SQLException e) {
-			System.out.println("Error: no se ha podido crear la reserva " + e);
+			System.out.println("Error: no se ha podido crear la reserva ");
 		}
+
 	}
 
 	public void crearCliente(Cliente cliente) {
 		try {
-			PreparedStatement crearCliente = conector
-					.prepareStatement("INSERT INTO clientes (dni,nombre,apellidos,direccion,localidad) VALUES (?,?,?,?,?)");
+			PreparedStatement crearCliente = conector.prepareStatement(
+					"INSERT INTO clientes (dni,nombre,apellidos,direccion,localidad) VALUES (?,?,?,?,?)");
 			crearCliente.setString(1, cliente.getDni());
 			crearCliente.setString(2, cliente.getNombre());
 			crearCliente.setString(3, cliente.getApellidos());
@@ -34,21 +43,39 @@ public class GestorBBDD extends Conector {
 		}
 	}
 
-	public void crearHotel(Hotel hotel) {
+	public void crearHotel(Hotel hotel, Scanner scan) {
+		int opcion_habitacion;
+		GestorBBDD gestorBBDD = new GestorBBDD();
 		PreparedStatement crearHotel;
 		try {
-			crearHotel = conector
-					.prepareStatement("INSERT INTO hoteles (cif,nombre,gerente,estrellas, compania) VALUES (?,?,?,?,?)");
+			crearHotel = conector.prepareStatement(
+					"INSERT INTO hoteles (cif,nombre,gerente,estrellas, compania) VALUES (?,?,?,?,?)");
+
 			crearHotel.setString(1, hotel.getCif());
 			crearHotel.setString(2, hotel.getNombre());
 			crearHotel.setString(3, hotel.getGerente());
 			crearHotel.setInt(4, hotel.getEstrellas());
 			crearHotel.setString(5, hotel.getCompania());
-			
+
 			crearHotel.execute();
+			System.out.println("Hotel creado");
+
+			do {
+
+				System.out.println("¿Quieres crear una habitacion? \n 1.Si \n 2.No");
+				opcion_habitacion = Integer.parseInt(scan.nextLine());
+
+				switch (opcion_habitacion) {
+				
+				case Menu.CREAR_HABITACION:
+					
+					
+				}
+			} while (opcion_habitacion != 0);
 		} catch (SQLException e) {
 			System.out.println("Error al crear hotel " + e);
 		}
+
 	}
 
 	public void crearHabitacion(Habitacion habitacion) {
@@ -60,8 +87,7 @@ public class GestorBBDD extends Conector {
 			crearHabitacion.setString(2, habitacion.getNumero());
 			crearHabitacion.setString(3, habitacion.getDescripcion());
 			crearHabitacion.setDouble(4, habitacion.getPrecio());
-		
-			
+
 			crearHabitacion.execute();
 		} catch (SQLException e) {
 			System.out.println("Error al crear hotel " + e);

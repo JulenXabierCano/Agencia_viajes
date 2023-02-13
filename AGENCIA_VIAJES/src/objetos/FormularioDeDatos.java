@@ -30,16 +30,16 @@ public class FormularioDeDatos {
 	public Habitacion datosHabitacion(Scanner scan) {
 		Habitacion habitacion = new Habitacion();
 		
-		System.out.println("Introduzca ID del hotel al que pertenece:");
+		System.out.println("Introduzca ID de la habitacion al que pertenece:");
 		habitacion.setId_hotel(Integer.parseInt(scan.nextLine()));
 		
-		System.out.println("Introduzca nombre del hotel:");
+		System.out.println("Introduzca numero de la habitacion:");
 		habitacion.setNumero(scan.nextLine());
 		
-		System.out.println("Introduzca gerente del hotel:");
+		System.out.println("Introduzca la descripcion de la habitacion:");
 		habitacion.setDescripcion(scan.nextLine());
 		
-		System.out.println("Introduzca numero de estrellas del hotel:");
+		System.out.println("Introduzca el precio de la habitacion:");
 		habitacion.setPrecio(Integer.parseInt(scan.nextLine()));
 		
 		return habitacion;
