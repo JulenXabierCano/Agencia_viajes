@@ -80,7 +80,7 @@ public class FormularioDeDatos {
 			System.out.println("Introduzca fecha de final de reserva:");
 			reserva.setHasta((Date) format.parse(scan.nextLine()));
 		} catch (ParseException e) {
-			System.out.println("Error: no se ha podido introducir la fecha " + e);
+			System.out.println("Error: no se ha podido introducir la fecha ");
 		}
 		
 		return reserva;

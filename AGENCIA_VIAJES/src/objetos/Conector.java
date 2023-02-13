@@ -13,7 +13,7 @@ public class Conector {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			conector = (Connection) DriverManager.getConnection(url, "root", "");
 		} catch (Exception e) {
-			System.out.println("Error: No se ha podido encontrar la base de datos "+ e);
+			System.out.println("Error: No se ha podido encontrar la base de datos ");
 		}
 	}
 	

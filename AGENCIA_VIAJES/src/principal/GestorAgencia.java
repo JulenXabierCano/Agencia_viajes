@@ -39,7 +39,6 @@ public class GestorAgencia {
 				break;
 			}
 		}while(opcion_menu != Menu.SALIR);
-		
 		scan.close();
 	}
 }
