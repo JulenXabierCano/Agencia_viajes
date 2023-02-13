@@ -27,7 +27,7 @@ public class FormularioDeDatos {
 		return hotel;
 	}
 	
-	public Habitacion datosHabitacion(Scanner scan) {
+	public static Habitacion datosHabitacion(Scanner scan) {
 		Habitacion habitacion = new Habitacion();
 		
 		System.out.println("Introduzca ID de la habitacion al que pertenece:");

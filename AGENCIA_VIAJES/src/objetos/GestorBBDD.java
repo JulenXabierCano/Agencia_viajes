@@ -68,8 +68,11 @@ public class GestorBBDD extends Conector {
 				switch (opcion_habitacion) {
 				
 				case Menu.CREAR_HABITACION:
+					gestorBBDD.conectar();
+					gestorBBDD.crearHabitacion(FormularioDeDatos.datosHabitacion(scan), scan);
+					gestorBBDD.cerrar();
 					
-					
+					break;
 				}
 			} while (opcion_habitacion != 0);
 		} catch (SQLException e) {
@@ -78,7 +81,7 @@ public class GestorBBDD extends Conector {
 
 	}
 
-	public void crearHabitacion(Habitacion habitacion) {
+	public void crearHabitacion(Habitacion habitacion, Scanner scan) {
 		PreparedStatement crearHabitacion;
 		try {
 			crearHabitacion = conector
