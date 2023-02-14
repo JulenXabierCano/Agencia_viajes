@@ -40,7 +40,6 @@ public class GestorClientes {
 				break;
 
 			case Menu.SALIR:
-				Menu.menuPrincipal();
 				break;
 
 			default:
