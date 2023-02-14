@@ -85,4 +85,13 @@ public class FormularioDeDatos {
 		
 		return reserva;
 	}
+
+	public Cliente eliminarCliente(Scanner scan) {
+		Cliente cliente = new Cliente();
+		
+		System.out.println("Introduce el DNI del usuario a eliminar");
+		cliente.setDni(scan.nextLine());
+		
+		return cliente;
+	}
 }

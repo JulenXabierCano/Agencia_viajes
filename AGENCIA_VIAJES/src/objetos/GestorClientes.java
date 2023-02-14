@@ -23,14 +23,13 @@ public class GestorClientes {
 				gbd.conectar();
 				gbd.crearCliente(cliente);
 				gbd.cerrar();
-				/*
-				 * importante seguir esta pauta, abrir conexion y luego cerrar
-				 * NO PONER SCAN.CLOSE() esta colocado en el GestorAgencia.java, no es necesario cerrarlo en cada clase
-				 */
 				break;
 
 			case Menu.ELIMINAR_CLIENTE:
-
+				cliente = fdd.eliminarCliente(scan);
+				gbd.conectar();
+				gbd.eliminarCliente(cliente, scan);
+				gbd.cerrar();
 				break;
 
 			case Menu.ACTUALIZAR_CLIENTE:

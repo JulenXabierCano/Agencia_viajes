@@ -111,5 +111,16 @@ public class GestorBBDD extends Conector {
 			System.out.println("Error al crear hotel " + e);
 		}
 	}
-
+	
+	public void eliminarCliente(Cliente cliente, Scanner scan) {
+		PreparedStatement eliminarCliente;
+		try {
+			eliminarCliente = conector.prepareStatement("DELETE FROM clientes WHERE dni = ?");
+			eliminarCliente.setString(1, cliente.getDni());
+			
+			eliminarCliente.execute();
+		} catch (SQLException e) {
+			System.out.println("Error al eliminar el cliente" + e);
+		}
+	}
 }
