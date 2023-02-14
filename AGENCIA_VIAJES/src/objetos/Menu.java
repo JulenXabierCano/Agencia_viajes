@@ -1,6 +1,5 @@
 package objetos;
 
-
 public class Menu {
 
 	public static final int GESTOR_CLIENTES = 1;
@@ -17,9 +16,8 @@ public class Menu {
 
 	public static final int ALTA_HOTEL = 1;
 	public static final int ALTA_HABITACION = 2;
-	
+
 	public static final int CREAR_HABITACION = 1;
-	
 
 	public static void menuPrincipal() {
 		System.out.println("Menú:");

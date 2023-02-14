@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class Conector {
 	protected Connection conector;
-	
+
 	public void conectar() {
 		try {
 			String url = "jdbc:mysql://localhost/agencia_viajes";
@@ -16,7 +16,7 @@ public class Conector {
 			System.out.println("Error: No se ha podido encontrar la base de datos ");
 		}
 	}
-	
+
 	public void cerrar() {
 		try {
 			conector.close();
