@@ -112,7 +112,7 @@ public class GestorBBDD extends Conector {
 		}
 	}
 	
-	public void eliminarCliente(Cliente cliente, Scanner scan) {
+	public void eliminarCliente(Cliente cliente) {
 		PreparedStatement eliminarCliente;
 		try {
 			eliminarCliente = conector.prepareStatement("DELETE FROM clientes WHERE dni = ?");
@@ -121,6 +121,22 @@ public class GestorBBDD extends Conector {
 			eliminarCliente.execute();
 		} catch (SQLException e) {
 			System.out.println("Error al eliminar el cliente" + e);
+		}
+	}
+
+	public void actualizarCliente(Cliente cliente) {
+		PreparedStatement actualizarCliente;
+		try {
+			actualizarCliente = conector.prepareStatement("UPDATE clientes SET nombre=?, apellidos=?, direccion=?, localidad=? WHEREdni=?");
+			actualizarCliente.setString(1, cliente.getNombre());
+			actualizarCliente.setString(2, cliente.getApellidos());
+			actualizarCliente.setString(3, cliente.getDireccion());
+			actualizarCliente.setString(4, cliente.getLocalidad());
+			actualizarCliente.setString(5, cliente.getDni());
+			
+			actualizarCliente.execute();
+		} catch (SQLException e) {
+			System.out.println("Error al actualizar los datos del cliente" + e);	
 		}
 	}
 }

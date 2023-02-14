@@ -28,12 +28,15 @@ public class GestorClientes {
 			case Menu.ELIMINAR_CLIENTE:
 				cliente = fdd.eliminarCliente(scan);
 				gbd.conectar();
-				gbd.eliminarCliente(cliente, scan);
+				gbd.eliminarCliente(cliente);
 				gbd.cerrar();
 				break;
 
 			case Menu.ACTUALIZAR_CLIENTE:
-
+				cliente = fdd.actualizarCliente(scan);
+				gbd.conectar();
+				gbd.actualizarCliente(cliente);
+				gbd.cerrar();
 				break;
 
 			case Menu.SALIR:

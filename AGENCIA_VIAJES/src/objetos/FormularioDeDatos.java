@@ -94,4 +94,21 @@ public class FormularioDeDatos {
 		
 		return cliente;
 	}
+
+	public Cliente actualizarCliente(Scanner scan) {
+		Cliente cliente = new Cliente();
+		
+		System.out.println("Introduce el DNI del cliente que se desea actualizar");
+		cliente.setDni(scan.nextLine());
+		System.out.println("Introduce el nombre del Cliente");
+		cliente.setNombre(scan.nextLine());
+		System.out.println("Introduce Apellidos del Cliente");
+		cliente.setApellidos(scan.nextLine());
+		System.out.println("Introduce direccion del Cliente");
+		cliente.setDireccion(scan.nextLine());
+		System.out.println("Introduce localidad en la que reside el Cliente");
+		cliente.setLocalidad(scan.nextLine());
+		
+		return cliente;
+	}
 }
