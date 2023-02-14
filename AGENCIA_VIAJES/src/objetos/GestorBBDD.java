@@ -86,11 +86,11 @@ public class GestorBBDD extends Conector {
 					gestorBBDD.conectar();
 					gestorBBDD.crearHabitacion(FormularioDeDatos.datosHabitacion(scan), scan);
 					gestorBBDD.cerrar();
-					
-				System.out.println("¿Desea crear otra habitacion?");
+
+					System.out.println("¿Desea crear otra habitacion?");
 
 					break;
-					
+
 				case 2:
 					System.out.println("Volviendo al gestor de hoteles");
 				default:
@@ -109,8 +109,8 @@ public class GestorBBDD extends Conector {
 	public void crearHabitacion(Habitacion habitacion, Scanner scan) {
 		PreparedStatement crearHabitacion;
 		try {
-			crearHabitacion = conector
-					.prepareStatement("INSERT INTO habitaciones (id,id_hotel,numero,descripcion,precio) VALUES (?,?,?,?,?)");
+			crearHabitacion = conector.prepareStatement(
+					"INSERT INTO habitaciones (id,id_hotel,numero,descripcion,precio) VALUES (?,?,?,?,?)");
 			crearHabitacion.setInt(1, habitacion.getId());
 			crearHabitacion.setInt(2, habitacion.getId_hotel());
 			crearHabitacion.setString(3, habitacion.getNumero());
