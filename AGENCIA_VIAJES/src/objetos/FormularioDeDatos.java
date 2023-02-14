@@ -47,8 +47,8 @@ public class FormularioDeDatos {
 
 		return habitacion;
 	}
-
-	public Cliente datosCliente(Scanner scan) {
+	
+	public static Cliente datosCliente(Scanner scan) {
 		Cliente cliente = new Cliente();
 
 		System.out.println("Introduce el DNI");
@@ -86,6 +86,39 @@ public class FormularioDeDatos {
 			System.out.println("Error: no se ha podido introducir la fecha ");
 		}
 
+		
+		System.out.println("Introduzca fecha de inicio de reserva:");
+		reserva.setDesde(java.sql.Date.valueOf(scan.nextLine()));
+		
+		System.out.println("Introduzca fecha de final de reserva:");
+		reserva.setHasta(java.sql.Date.valueOf(scan.nextLine()));
+		
 		return reserva;
+	}
+
+	public static Cliente eliminarCliente(Scanner scan) {
+		Cliente cliente = new Cliente();
+		
+		System.out.println("Introduce el DNI del usuario a eliminar");
+		cliente.setDni(scan.nextLine());
+		
+		return cliente;
+	}
+
+	public static Cliente actualizarCliente(Scanner scan) {
+		Cliente cliente = new Cliente();
+		
+		System.out.println("Introduce el DNI del cliente que se desea actualizar");
+		cliente.setDni(scan.nextLine());
+		System.out.println("Introduce el nombre del Cliente");
+		cliente.setNombre(scan.nextLine());
+		System.out.println("Introduce Apellidos del Cliente");
+		cliente.setApellidos(scan.nextLine());
+		System.out.println("Introduce direccion del Cliente");
+		cliente.setDireccion(scan.nextLine());
+		System.out.println("Introduce localidad en la que reside el Cliente");
+		cliente.setLocalidad(scan.nextLine());
+		
+		return cliente;
 	}
 }

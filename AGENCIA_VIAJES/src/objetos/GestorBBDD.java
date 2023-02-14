@@ -19,7 +19,7 @@ public class GestorBBDD extends Conector {
 				ResultSet resultado = select.executeQuery();
 				String habitaciones = "-----Habitaciones-----\n";
 				while (resultado.next()) {
-					habitaciones += resultado.getInt(3) + " : " + resultado.getString(4) + "" + resultado.getDouble(5);
+					System.out.println(resultado.getInt(3) + " : " + resultado.getString(4) + "" + resultado.getDouble(5));
 				}
 
 				PreparedStatement crearReserva = conector
@@ -28,8 +28,8 @@ public class GestorBBDD extends Conector {
 
 				crearReserva.setInt(1, reserva.getId_habitacion());
 				crearReserva.setString(2, reserva.getDni());
-				crearReserva.setDate(3, reserva.getDesde());
-				crearReserva.setDate(4, reserva.getHasta());
+				crearReserva.setDate(3, (Date) reserva.getDesde());
+				crearReserva.setDate(4, (Date) reserva.getHasta());
 				crearReserva.execute();
 
 			} else {
@@ -122,5 +122,32 @@ public class GestorBBDD extends Conector {
 			System.out.println("Error al crear hotel " + e);
 		}
 	}
+	
+	public void eliminarCliente(Cliente cliente) {
+		PreparedStatement eliminarCliente;
+		try {
+			eliminarCliente = conector.prepareStatement("DELETE FROM clientes WHERE dni = ?");
+			eliminarCliente.setString(1, cliente.getDni());
+			
+			eliminarCliente.execute();
+		} catch (SQLException e) {
+			System.out.println("Error al eliminar el cliente" + e);
+		}
+	}
 
+	public void actualizarCliente(Cliente cliente) {
+		PreparedStatement actualizarCliente;
+		try {
+			actualizarCliente = conector.prepareStatement("UPDATE clientes SET nombre=?, apellidos=?, direccion=?, localidad=? WHERE dni=?");
+			actualizarCliente.setString(1, cliente.getNombre());
+			actualizarCliente.setString(2, cliente.getApellidos());
+			actualizarCliente.setString(3, cliente.getDireccion());
+			actualizarCliente.setString(4, cliente.getLocalidad());
+			actualizarCliente.setString(5, cliente.getDni());
+			
+			actualizarCliente.execute();
+		} catch (SQLException e) {
+			System.out.println("Error al actualizar los datos del cliente" + e);	
+		}
+	}
 }
