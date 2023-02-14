@@ -17,21 +17,21 @@ public class GestorBBDD extends Conector {
 						"SELECT * FROM habitaciones WHERE id_hotel = (SELECT id FROM hoteles WHERE nombre = ?)");
 				select.setString(1, hotel);
 				ResultSet resultado = select.executeQuery();
-				
+				String habitaciones = "-----Habitaciones-----\n";
 				while (resultado.next()) {
-					
+					habitaciones += resultado.getInt(3) + " : " + resultado.getString(4) + "" + resultado.getDouble(5);
 				}
-				
+
 				PreparedStatement crearReserva = conector
 						.prepareStatement("INSERT INTO reservas (id_habitacion,dni,desde,hasta) VALUES (?,?,?,?)");
 				Reserva reserva = FormularioDeDatos.datosReserva(scan);
-				
+
 				crearReserva.setInt(1, reserva.getId_habitacion());
 				crearReserva.setString(2, reserva.getDni());
 				crearReserva.setDate(3, reserva.getDesde());
 				crearReserva.setDate(4, reserva.getHasta());
 				crearReserva.execute();
-				
+
 			} else {
 				System.out.println("Error: no se ha podido crear la reserva");
 			}
@@ -86,10 +86,20 @@ public class GestorBBDD extends Conector {
 					gestorBBDD.conectar();
 					gestorBBDD.crearHabitacion(FormularioDeDatos.datosHabitacion(scan), scan);
 					gestorBBDD.cerrar();
+					
+				System.out.println("¿Desea crear otra habitacion?");
 
 					break;
+					
+				case 2:
+					System.out.println("Volviendo al gestor de hoteles");
+				default:
+					System.out.println("Opcion no existente");
+
+					break;
+
 				}
-			} while (opcion_habitacion != 0);
+			} while (opcion_habitacion != 2);
 		} catch (SQLException e) {
 			System.out.println("Error al crear hotel " + e);
 		}
@@ -100,11 +110,12 @@ public class GestorBBDD extends Conector {
 		PreparedStatement crearHabitacion;
 		try {
 			crearHabitacion = conector
-					.prepareStatement("INSERT INTO habitaciones (id_hotel,numero,descripcion,precio) VALUES (?,?,?,?)");
+					.prepareStatement("INSERT INTO habitaciones (id,id_hotel,numero,descripcion,precio) VALUES (?,?,?,?,?)");
 			crearHabitacion.setInt(1, habitacion.getId());
-			crearHabitacion.setString(2, habitacion.getNumero());
-			crearHabitacion.setString(3, habitacion.getDescripcion());
-			crearHabitacion.setDouble(4, habitacion.getPrecio());
+			crearHabitacion.setInt(2, habitacion.getId_hotel());
+			crearHabitacion.setString(3, habitacion.getNumero());
+			crearHabitacion.setString(4, habitacion.getDescripcion());
+			crearHabitacion.setDouble(5, habitacion.getPrecio());
 
 			crearHabitacion.execute();
 		} catch (SQLException e) {

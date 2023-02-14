@@ -15,9 +15,8 @@ public class GestorHoteles {
 		
 		
 		do {
-			
-			Menu.menuHotelHabitaciones();
 			System.out.println("¿Qué proceso quiere realizar?");
+			Menu.menuHotelHabitaciones();
 			opcion_menu = Integer.parseInt(scan.nextLine());
 			
 		switch (opcion_menu) {

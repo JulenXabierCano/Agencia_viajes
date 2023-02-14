@@ -30,7 +30,10 @@ public class FormularioDeDatos {
 	public static Habitacion datosHabitacion(Scanner scan) {
 		Habitacion habitacion = new Habitacion();
 		
-		System.out.println("Introduzca ID de la habitacion al que pertenece:");
+		System.out.println("Introduzca la id de la habitacion");
+		habitacion.setId(Integer.parseInt(scan.nextLine()));
+		
+		System.out.println("Introduzca ID del hotel al que pertenece:");
 		habitacion.setId_hotel(Integer.parseInt(scan.nextLine()));
 		
 		System.out.println("Introduzca numero de la habitacion:");
