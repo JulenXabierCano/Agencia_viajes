@@ -9,7 +9,7 @@ public class Conector {
 	
 	public void conectar() {
 		try {
-			String url = "jdbc:mysql://localhost/agencia_viajes";
+			String url = "jdbc:mysql://10.10.12.98/agencia_viajes";
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			conector = (Connection) DriverManager.getConnection(url, "root", "");
 		} catch (Exception e) {
