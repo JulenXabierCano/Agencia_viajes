@@ -48,7 +48,7 @@ public class FormularioDeDatos {
 		return habitacion;
 	}
 	
-	public Cliente datosCliente(Scanner scan) {
+	public static Cliente datosCliente(Scanner scan) {
 		Cliente cliente = new Cliente();
 		
 		System.out.println("Introduce el DNI");
@@ -84,7 +84,7 @@ public class FormularioDeDatos {
 		return reserva;
 	}
 
-	public Cliente eliminarCliente(Scanner scan) {
+	public static Cliente eliminarCliente(Scanner scan) {
 		Cliente cliente = new Cliente();
 		
 		System.out.println("Introduce el DNI del usuario a eliminar");
@@ -93,7 +93,7 @@ public class FormularioDeDatos {
 		return cliente;
 	}
 
-	public Cliente actualizarCliente(Scanner scan) {
+	public static Cliente actualizarCliente(Scanner scan) {
 		Cliente cliente = new Cliente();
 		
 		System.out.println("Introduce el DNI del cliente que se desea actualizar");
