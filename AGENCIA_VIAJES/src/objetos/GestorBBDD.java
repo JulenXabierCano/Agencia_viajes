@@ -19,7 +19,7 @@ public class GestorBBDD extends Conector {
 				ResultSet resultado = select.executeQuery();
 				String habitaciones = "-----Habitaciones-----\n";
 				while (resultado.next()) {
-					habitaciones += resultado.getInt(3) + " : " + resultado.getString(4) + "" + resultado.getDouble(5);
+					System.out.println(resultado.getInt(3) + " : " + resultado.getString(4) + "" + resultado.getDouble(5));
 				}
 
 				PreparedStatement crearReserva = conector
@@ -28,8 +28,8 @@ public class GestorBBDD extends Conector {
 
 				crearReserva.setInt(1, reserva.getId_habitacion());
 				crearReserva.setString(2, reserva.getDni());
-				crearReserva.setDate(3, reserva.getDesde());
-				crearReserva.setDate(4, reserva.getHasta());
+				crearReserva.setDate(3, (Date) reserva.getDesde());
+				crearReserva.setDate(4, (Date) reserva.getHasta());
 				crearReserva.execute();
 
 			} else {
