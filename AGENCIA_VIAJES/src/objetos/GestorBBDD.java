@@ -79,9 +79,13 @@ public class GestorBBDD extends Conector {
 					gestorBBDD.conectar();
 					gestorBBDD.crearHabitacion(FormularioDeDatos.datosHabitacion(scan), scan);
 					gestorBBDD.cerrar();
+					
+				System.out.println("¿Desea crear otra habitacion?");
 
 					break;
-
+					
+				case 0:
+					System.out.println("Volviendo al gestor de hoteles");
 				default:
 					System.out.println("Opcion no existente");
 
@@ -99,11 +103,12 @@ public class GestorBBDD extends Conector {
 		PreparedStatement crearHabitacion;
 		try {
 			crearHabitacion = conector
-					.prepareStatement("INSERT INTO habitaciones (id_hotel,numero,descripcion,precio) VALUES (?,?,?,?)");
+					.prepareStatement("INSERT INTO habitaciones (id,id_hotel,numero,descripcion,precio) VALUES (?,?,?,?,?)");
 			crearHabitacion.setInt(1, habitacion.getId());
-			crearHabitacion.setString(2, habitacion.getNumero());
-			crearHabitacion.setString(3, habitacion.getDescripcion());
-			crearHabitacion.setDouble(4, habitacion.getPrecio());
+			crearHabitacion.setInt(2, habitacion.getId_hotel());
+			crearHabitacion.setString(3, habitacion.getNumero());
+			crearHabitacion.setString(4, habitacion.getDescripcion());
+			crearHabitacion.setDouble(5, habitacion.getPrecio());
 
 			crearHabitacion.execute();
 		} catch (SQLException e) {
