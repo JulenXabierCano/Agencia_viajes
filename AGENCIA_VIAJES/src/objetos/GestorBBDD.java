@@ -66,13 +66,20 @@ public class GestorBBDD extends Conector {
 				opcion_habitacion = Integer.parseInt(scan.nextLine());
 
 				switch (opcion_habitacion) {
-				
+
 				case Menu.CREAR_HABITACION:
+
 					gestorBBDD.conectar();
 					gestorBBDD.crearHabitacion(FormularioDeDatos.datosHabitacion(scan), scan);
 					gestorBBDD.cerrar();
-					
+
 					break;
+
+				default:
+					System.out.println("Opcion no existente");
+
+					break;
+
 				}
 			} while (opcion_habitacion != 0);
 		} catch (SQLException e) {
