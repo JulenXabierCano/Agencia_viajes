@@ -91,7 +91,7 @@ public class GestorBBDD extends Conector {
 
 					break;
 					
-				case 0:
+				case 2:
 					System.out.println("Volviendo al gestor de hoteles");
 				default:
 					System.out.println("Opcion no existente");
@@ -99,7 +99,7 @@ public class GestorBBDD extends Conector {
 					break;
 
 				}
-			} while (opcion_habitacion != 0);
+			} while (opcion_habitacion != 2);
 		} catch (SQLException e) {
 			System.out.println("Error al crear hotel " + e);
 		}
