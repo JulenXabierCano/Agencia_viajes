@@ -15,7 +15,7 @@ public class GestorReservas {
 			case Menu.RESERVAR:
 				GestorBBDD bbdd = new GestorBBDD();
 				bbdd.conectar();
-				bbdd.crearReserva(FormularioDeDatos.datosReserva(scan),scan);
+				bbdd.crearReserva(scan);
 				bbdd.cerrar();
 				break;
 

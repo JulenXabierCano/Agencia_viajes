@@ -1,11 +1,10 @@
 package objetos;
 
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.Scanner;
 
 public class GestorBBDD extends Conector {
-	public void crearReserva(Reserva reserva, Scanner scan) {
+	public void crearReserva(Scanner scan) {
 		try {
 			PreparedStatement select = conector.prepareStatement("SELECT * FROM clientes WHERE dni=?");
 			System.out.println("Introduzca DNI del cliente");
@@ -17,18 +16,26 @@ public class GestorBBDD extends Conector {
 				select = conector.prepareStatement(
 						"SELECT * FROM habitaciones WHERE id_hotel = (SELECT id FROM hoteles WHERE nombre = ?)");
 				select.setString(1, hotel);
+				ResultSet resultado = select.executeQuery();
+				String habitaciones = "-----Habitaciones-----\n";
+				while (resultado.next()) {
+					habitaciones += resultado.getInt(3) + " : " + resultado.getString(4) + "" + resultado.getDouble(5);
+				}
+
+				PreparedStatement crearReserva = conector
+						.prepareStatement("INSERT INTO reservas (id_habitacion,dni,desde,hasta) VALUES (?,?,?,?)");
+				Reserva reserva = FormularioDeDatos.datosReserva(scan);
+
+				crearReserva.setInt(1, reserva.getId_habitacion());
+				crearReserva.setString(2, reserva.getDni());
+				crearReserva.setDate(3, reserva.getDesde());
+				crearReserva.setDate(4, reserva.getHasta());
+				crearReserva.execute();
 
 			} else {
 				System.out.println("Error: no se ha podido crear la reserva");
 			}
 
-			PreparedStatement crearReserva = conector
-					.prepareStatement("INSERT INTO reservas (id_habitacion,dni,desde,hasta) VALUES (?,?,?,?)");
-			crearReserva.setInt(1, reserva.getId_habitacion());
-			crearReserva.setString(2, reserva.getDni());
-			crearReserva.setDate(3, reserva.getDesde());
-			crearReserva.setDate(4, reserva.getHasta());
-			crearReserva.execute();
 		} catch (SQLException e) {
 			System.out.println("Error: no se ha podido crear la reserva ");
 		}
