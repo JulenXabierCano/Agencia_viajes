@@ -7,12 +7,19 @@ import java.util.Scanner;
 public class GestorBBDD extends Conector {
 	public void crearReserva(Reserva reserva, Scanner scan) {
 		try {
-			PreparedStatement selectCliente = conector.prepareStatement("SELECT * FROM clientes WHERE dni=?");
+			PreparedStatement select = conector.prepareStatement("SELECT * FROM clientes WHERE dni=?");
 			System.out.println("Introduzca DNI del cliente");
 			String dni = scan.nextLine();
-			selectCliente.setString(1, dni);
-			if (selectCliente.execute()) {
-				System.out.println();
+			select.setString(1, dni);
+			if (select.execute()) {
+				System.out.println("Introduzca el hotel en el que se va a alojar");
+				String hotel = scan.nextLine();
+				select = conector.prepareStatement(
+						"SELECT * FROM habitaciones WHERE id_hotel = (SELECT id FROM hoteles WHERE nombre = ?)");
+				select.setString(1, hotel);
+				
+			} else {
+				System.out.println("Error: no se ha podido crear la reserva");
 			}
 
 			PreparedStatement crearReserva = conector
@@ -66,10 +73,9 @@ public class GestorBBDD extends Conector {
 				opcion_habitacion = Integer.parseInt(scan.nextLine());
 
 				switch (opcion_habitacion) {
-				
+
 				case Menu.CREAR_HABITACION:
-					
-					
+
 				}
 			} while (opcion_habitacion != 0);
 		} catch (SQLException e) {
