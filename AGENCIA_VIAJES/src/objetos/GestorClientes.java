@@ -11,12 +11,12 @@ public class GestorClientes {
 		GestorBBDD gbd = new GestorBBDD();
 		Cliente cliente;
 
-		Menu.menuClientes();
-		System.out.println("Selecciona la siguiente accion a realizar");
-		opcion_menu = Integer.parseInt(scan.nextLine());
 
 		do {
 
+			Menu.menuClientes();
+			System.out.println("Selecciona la siguiente accion a realizar");
+			opcion_menu = Integer.parseInt(scan.nextLine());
 			switch (opcion_menu) {
 			case Menu.ALTA_CLIENTE:
 				cliente = fdd.datosCliente(scan);
