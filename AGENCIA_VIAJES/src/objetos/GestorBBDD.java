@@ -138,7 +138,7 @@ public class GestorBBDD extends Conector {
 	public void actualizarCliente(Cliente cliente) {
 		PreparedStatement actualizarCliente;
 		try {
-			actualizarCliente = conector.prepareStatement("UPDATE clientes SET nombre=?, apellidos=?, direccion=?, localidad=? WHEREdni=?");
+			actualizarCliente = conector.prepareStatement("UPDATE clientes SET nombre=?, apellidos=?, direccion=?, localidad=? WHERE dni=?");
 			actualizarCliente.setString(1, cliente.getNombre());
 			actualizarCliente.setString(2, cliente.getApellidos());
 			actualizarCliente.setString(3, cliente.getDireccion());
