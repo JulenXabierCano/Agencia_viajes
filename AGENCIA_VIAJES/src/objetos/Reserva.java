@@ -38,16 +38,16 @@ public class Reserva {
 		return desde;
 	}
 
-	public void setDesde(Date desde) {
-		this.desde = desde;
+	public void setDesde(java.sql.Date date) {
+		this.desde = (Date) date;
 	}
 
 	public Date getHasta() {
 		return hasta;
 	}
 
-	public void setHasta(Date hasta) {
-		this.hasta = hasta;
+	public void setHasta(java.sql.Date hasta) {
+		this.hasta = (Date) hasta;
 	}
 
 	public Reserva(int id, int id_habitacion, String dni, Date desde, Date hasta) {
@@ -63,7 +63,6 @@ public class Reserva {
 
 	}
 
-	@Override
 	public String toString() {
 		return "Reserva [id=" + id + ", id_habitacion=" + id_habitacion + ", dni=" + dni + ", desde=" + desde
 				+ ", hasta=" + hasta + "]";

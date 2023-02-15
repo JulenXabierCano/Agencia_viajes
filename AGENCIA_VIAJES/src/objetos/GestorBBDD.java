@@ -6,21 +6,30 @@ import java.util.Scanner;
 public class GestorBBDD extends Conector {
 	public void crearReserva(Scanner scan) {
 		try {
-			PreparedStatement select = conector.prepareStatement("SELECT * FROM clientes WHERE dni=?");
+			PreparedStatement select = conector.prepareStatement("SELECT * FROM clientes WHERE dni = ?");
 			System.out.println("Introduzca DNI del cliente");
 			String dni = scan.nextLine();
 			select.setString(1, dni);
-			if (select.execute()) {
+			boolean dniExiste = false;
+			
+			ResultSet resultado = select.executeQuery();
+			while (resultado.next()) {
+				if(resultado.getString(1).equals(dni)){
+					dniExiste=true;
+				}
+			}
+			
+			if (dniExiste) {
 				System.out.println("Introduzca el hotel en el que se va a alojar");
 				String hotel = scan.nextLine();
 				select = conector.prepareStatement(
 						"SELECT * FROM habitaciones WHERE id_hotel = (SELECT id FROM hoteles WHERE nombre = ?)");
 				select.setString(1, hotel);
-				ResultSet resultado = select.executeQuery();
+				resultado = select.executeQuery();
 				String habitaciones = "-----Habitaciones-----\n";
 				while (resultado.next()) {
 					System.out.println("Nº " + resultado.getInt(3) + " : " + resultado.getString(4) + " : "
-							+ resultado.getDouble(5) + "€");
+							+ resultado.getDouble(5) + "€" + " : ID " + resultado.getInt(1));
 				}
 
 				PreparedStatement crearReserva = conector
@@ -28,13 +37,13 @@ public class GestorBBDD extends Conector {
 				Reserva reserva = FormularioDeDatos.datosReserva(scan);
 
 				crearReserva.setInt(1, reserva.getId_habitacion());
-				crearReserva.setString(2, reserva.getDni());
+				crearReserva.setString(2, dni);
 				crearReserva.setDate(3, (Date) reserva.getDesde());
 				crearReserva.setDate(4, (Date) reserva.getHasta());
 				crearReserva.execute();
 
 			} else {
-				System.out.println("Error: no se ha podido crear la reserva");
+				System.out.println("Error: no existe el dni " + dni);
 			}
 
 		} catch (SQLException e) {
