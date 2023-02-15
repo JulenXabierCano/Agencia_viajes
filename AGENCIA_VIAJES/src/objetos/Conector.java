@@ -44,7 +44,6 @@ public class Conector {
 				clientes.add(cliente);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

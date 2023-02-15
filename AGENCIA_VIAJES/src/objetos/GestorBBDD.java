@@ -165,8 +165,7 @@ public class GestorBBDD extends Conector {
 		}
 	}
 
-	public void consultaCaracter() {
-		// TODO Auto-generated method stub
+	public void consultaCaracter(String string) {
 		
 	}
 }

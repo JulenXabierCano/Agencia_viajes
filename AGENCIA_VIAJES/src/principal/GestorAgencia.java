@@ -1,12 +1,13 @@
 package principal;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 import objetos.*;
 
 
 public class GestorAgencia {
-	public void Run() {
+	public void Run() throws SQLException {
 		
 		Scanner scan = new Scanner(System.in);
 		int opcion_menu = 0;

@@ -108,4 +108,14 @@ public class FormularioDeDatos {
 		
 		return cliente;
 	}
+	
+	public static String consultaCadena(Scanner scan) {
+		String cadena;
+		
+		System.out.println("Introduce la cadena de caracteres a buscar");
+		cadena = scan.nextLine();
+		
+		return cadena;
+		
+	}
 }

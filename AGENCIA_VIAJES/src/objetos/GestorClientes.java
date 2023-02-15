@@ -1,10 +1,13 @@
 package objetos;
 
+import java.lang.reflect.Array;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class GestorClientes {
 
-	public static void Run(Scanner scan) {
+	public static void Run(Scanner scan) throws SQLException {
 
 		int opcion_menu = 0;
 		GestorBBDD gbd = new GestorBBDD();
@@ -47,7 +50,8 @@ public class GestorClientes {
 					break;
 				case Menu.CARACTER:
 					gbd.conectar();
-					gbd.consultaCaracter();
+					ArrayList<Cliente> clientes = new ArrayList<Cliente>();
+					gbd.descargarDatos(clientes);
 					gbd.cerrar();
 					break;
 				case Menu.SALIR:
@@ -65,5 +69,14 @@ public class GestorClientes {
 				break;
 			}
 		} while (opcion_menu != Menu.SALIR);
+	}
+	
+	private static void contiene(ArrayList<Cliente> clientes,String cadena) {
+		for (Cliente cliente : clientes) {
+			if(cliente.getNombre().contains(cadena)||cliente.getApellidos().contains(cadena)) {
+				System.out.println(cliente);
+			}
+			
+		}
 	}
 }
