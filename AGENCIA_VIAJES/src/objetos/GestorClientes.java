@@ -33,6 +33,25 @@ public class GestorClientes {
 				gbd.actualizarCliente(FormularioDeDatos.actualizarCliente(scan));
 				gbd.cerrar();
 				break;
+				
+			case Menu.MENUMENU:
+				do {
+				Menu.menuMenu();
+				System.out.println("Selecciona la siguiente accion a realizar");
+				opcion_menu = Integer.parseInt(scan.nextLine());
+				switch(opcion_menu) {
+				case Menu.APELLIDO:
+					break;
+				case Menu.NOMBRE:
+					break;
+				case Menu.CARACTER:
+					break;
+				case Menu.SALIR:
+					break;
+					default:
+						break;
+				}
+				}while(opcion_menu!=Menu.SALIR);
 
 			case Menu.SALIR:
 				break;

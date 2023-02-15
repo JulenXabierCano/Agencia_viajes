@@ -3,6 +3,7 @@ package objetos;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class Conector {
 	protected Connection conector;
@@ -23,5 +24,9 @@ public class Conector {
 		} catch (SQLException e) {
 			System.out.println("Error: No se ha podido cerrar la conexion");
 		}
+	}
+	
+	public void descargarDatos(ArrayList<Cliente> clientes) {
+		
 	}
 }

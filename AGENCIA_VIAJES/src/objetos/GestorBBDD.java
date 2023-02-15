@@ -19,10 +19,9 @@ public class GestorBBDD extends Conector {
 				ResultSet resultado = select.executeQuery();
 				String habitaciones = "-----Habitaciones-----\n";
 				while (resultado.next()) {
-					System.out.println("Nº " + resultado.getInt(3) + " : " + resultado.getString(4) + " : "
-							+ resultado.getDouble(5) + "€");
+					System.out.println(resultado.getInt(3) + " : " + resultado.getString(4) + "" + resultado.getDouble(5));
 				}
-
+				
 				PreparedStatement crearReserva = conector
 						.prepareStatement("INSERT INTO reservas (id_habitacion,dni,desde,hasta) VALUES (?,?,?,?)");
 				Reserva reserva = FormularioDeDatos.datosReserva(scan);
@@ -87,11 +86,11 @@ public class GestorBBDD extends Conector {
 					gestorBBDD.conectar();
 					gestorBBDD.crearHabitacion(FormularioDeDatos.datosHabitacion(scan), scan);
 					gestorBBDD.cerrar();
-
-					System.out.println("¿Desea crear otra habitacion?");
+					
+				System.out.println("¿Desea crear otra habitacion?");
 
 					break;
-
+					
 				case 2:
 					System.out.println("Volviendo al gestor de hoteles");
 				default:
@@ -110,8 +109,8 @@ public class GestorBBDD extends Conector {
 	public void crearHabitacion(Habitacion habitacion, Scanner scan) {
 		PreparedStatement crearHabitacion;
 		try {
-			crearHabitacion = conector.prepareStatement(
-					"INSERT INTO habitaciones (id,id_hotel,numero,descripcion,precio) VALUES (?,?,?,?,?)");
+			crearHabitacion = conector
+					.prepareStatement("INSERT INTO habitaciones (id,id_hotel,numero,descripcion,precio) VALUES (?,?,?,?,?)");
 			crearHabitacion.setInt(1, habitacion.getId());
 			crearHabitacion.setInt(2, habitacion.getId_hotel());
 			crearHabitacion.setString(3, habitacion.getNumero());
@@ -123,13 +122,13 @@ public class GestorBBDD extends Conector {
 			System.out.println("Error al crear hotel " + e);
 		}
 	}
-
+	
 	public void eliminarCliente(Cliente cliente) {
 		PreparedStatement eliminarCliente;
 		try {
 			eliminarCliente = conector.prepareStatement("DELETE FROM clientes WHERE dni = ?");
 			eliminarCliente.setString(1, cliente.getDni());
-
+			
 			eliminarCliente.execute();
 		} catch (SQLException e) {
 			System.out.println("Error al eliminar el cliente" + e);
@@ -139,17 +138,16 @@ public class GestorBBDD extends Conector {
 	public void actualizarCliente(Cliente cliente) {
 		PreparedStatement actualizarCliente;
 		try {
-			actualizarCliente = conector.prepareStatement(
-					"UPDATE clientes SET nombre=?, apellidos=?, direccion=?, localidad=? WHERE dni=?");
+			actualizarCliente = conector.prepareStatement("UPDATE clientes SET nombre=?, apellidos=?, direccion=?, localidad=? WHEREdni=?");
 			actualizarCliente.setString(1, cliente.getNombre());
 			actualizarCliente.setString(2, cliente.getApellidos());
 			actualizarCliente.setString(3, cliente.getDireccion());
 			actualizarCliente.setString(4, cliente.getLocalidad());
 			actualizarCliente.setString(5, cliente.getDni());
-
+			
 			actualizarCliente.execute();
 		} catch (SQLException e) {
-			System.out.println("Error al actualizar los datos del cliente" + e);
+			System.out.println("Error al actualizar los datos del cliente" + e);	
 		}
 	}
 }
