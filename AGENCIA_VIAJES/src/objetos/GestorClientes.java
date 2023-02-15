@@ -41,10 +41,14 @@ public class GestorClientes {
 				opcion_menu = Integer.parseInt(scan.nextLine());
 				switch(opcion_menu) {
 				case Menu.APELLIDO:
+					
 					break;
 				case Menu.NOMBRE:
 					break;
 				case Menu.CARACTER:
+					gbd.conectar();
+					gbd.consultaCaracter();
+					gbd.cerrar();
 					break;
 				case Menu.SALIR:
 					break;

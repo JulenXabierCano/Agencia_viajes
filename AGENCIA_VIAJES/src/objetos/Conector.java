@@ -2,7 +2,9 @@ package objetos;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 public class Conector {
@@ -26,7 +28,24 @@ public class Conector {
 		}
 	}
 	
-	public void descargarDatos(ArrayList<Cliente> clientes) {
-		
+	public void descargarDatos(ArrayList<Cliente> clientes) throws SQLException {
+		String sentenciaSelect = "SELECT * FROM clientes";
+		Statement st = conector.createStatement();
+		ResultSet resultado = st.executeQuery(sentenciaSelect);
+		Cliente cliente = new Cliente();
+		try {
+			while(resultado.next()) {
+				cliente.setDni(resultado.getString("dni"));
+				cliente.setNombre((resultado.getString("nombre")));
+				cliente.setApellidos((resultado.getString("apellidos")));
+				cliente.setDireccion(resultado.getString("direccion"));
+				cliente.setLocalidad(resultado.getString("localidad"));
+				
+				clientes.add(cliente);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
