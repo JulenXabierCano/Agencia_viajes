@@ -54,6 +54,7 @@ public class Menu {
 	}
 	
 	public static void menuMenu() {
+		System.out.println("Menú:");
 		System.out.println(APELLIDO +".	Apellido");
 		System.out.println(NOMBRE +".	Nombre");
 		System.out.println(CARACTER +".	Caracter");

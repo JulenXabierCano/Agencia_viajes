@@ -71,12 +71,13 @@ public class GestorClientes {
 		} while (opcion_menu != Menu.SALIR);
 	}
 	
-	private static void contiene(ArrayList<Cliente> clientes,String cadena) {
+	private void contiene(ArrayList<Cliente> clientes,String cadena) {
 		for (Cliente cliente : clientes) {
 			if(cliente.getNombre().contains(cadena)||cliente.getApellidos().contains(cadena)) {
 				System.out.println(cliente);
 			}
 			
 		}
+		
 	}
 }

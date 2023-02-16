@@ -165,7 +165,4 @@ public class GestorBBDD extends Conector {
 		}
 	}
 
-	public void consultaCaracter(String string) {
-		
-	}
 }

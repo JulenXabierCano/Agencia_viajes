@@ -29,6 +29,7 @@ public class Conector {
 	}
 	
 	public void descargarDatos(ArrayList<Cliente> clientes) throws SQLException {
+		conectar();
 		String sentenciaSelect = "SELECT * FROM clientes";
 		Statement st = conector.createStatement();
 		ResultSet resultado = st.executeQuery(sentenciaSelect);
