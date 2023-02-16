@@ -74,10 +74,10 @@ public class FormularioDeDatos {
 		reserva.setId_habitacion(Integer.parseInt(scan.nextLine()));
 
 
-			System.out.println("Introduzca fecha de inicio de reserva:");
+			System.out.println("Introduzca fecha de inicio de reserva (YYYY-DD-MM):");
 			reserva.setDesde(java.sql.Date.valueOf(scan.nextLine()));
 
-			System.out.println("Introduzca fecha de final de reserva:");
+			System.out.println("Introduzca fecha de final de reserva (YYYY-DD-MM):");
 			reserva.setHasta(java.sql.Date.valueOf(scan.nextLine()));
 		
 		return reserva;
@@ -107,5 +107,10 @@ public class FormularioDeDatos {
 		cliente.setLocalidad(scan.nextLine());
 		
 		return cliente;
+	}
+
+	public static java.sql.Date conseguirFecha(String string,Scanner scan) {
+		System.out.println(string);
+		return Date.valueOf(scan.nextLine());
 	}
 }
