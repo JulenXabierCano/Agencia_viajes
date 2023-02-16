@@ -45,11 +45,8 @@ public class GestorBBDD extends Conector {
 						"SELECT * FROM habitaciones WHERE id_hotel = (SELECT id FROM hoteles WHERE nombre = ?)");
 				select.setString(1, hotel);
 				resultado = select.executeQuery();
-				String habitaciones = "-----Habitaciones-----\n";
+				System.out.println("-----Habitaciones-----\n");
 				while (resultado.next()) {
-
-					System.out.println(
-							resultado.getInt(3) + " : " + resultado.getString(4) + "" + resultado.getDouble(5));
 
 					System.out.println("Nº " + resultado.getInt(3) + " : " + resultado.getString(4) + " : "
 							+ resultado.getDouble(5) + "€" + " : ID " + resultado.getInt(1));
@@ -78,6 +75,45 @@ public class GestorBBDD extends Conector {
 
 	public void cancelarReserva(Scanner scan) {
 
+		try {
+
+			System.out.println("Introduzca DNI del cliente");
+			String dni = scan.nextLine();
+			PreparedStatement delete = conector.prepareStatement("SELECT * FROM reservas WHERE dni =" + dni + "");
+
+			ResultSet resultado = delete.executeQuery();
+			System.out.println(" ----- RESERVAS ----- ");
+			while (resultado.next()) {
+				System.out.println(resultado.getInt(1) + " : " + resultado.getInt(2) + " : " + resultado.getString(3)
+						+ " : " + resultado.getDate(4) + " : " + resultado.getDate(5));
+			}
+
+			delete = conector.prepareStatement("DELETE FROM reservas WHERE id = ?");
+
+			System.out.println("Introduzca ID de la reserva que quiere cancelar");
+			delete.setInt(1, Integer.parseInt(scan.nextLine()));
+			delete.execute();
+
+		} catch (SQLException e) {
+			System.out.println("ERROR: No se ha podido cancelar la reserva:\n" + e);
+		}
+	}
+
+	public void comprobarReservasCliente(Scanner scan) {
+		try {
+			System.out.println("Introduzca DNI del cliente");
+			String dni = scan.nextLine();
+			PreparedStatement delete;
+			delete = conector.prepareStatement("SELECT * FROM reservas WHERE dni =" + dni + "");
+			ResultSet resultado = delete.executeQuery();
+			System.out.println(" ----- RESERVAS ----- ");
+			while (resultado.next()) {
+				System.out.println(resultado.getInt(1) + " : " + resultado.getInt(2) + " : " + resultado.getString(3)
+						+ " : " + resultado.getDate(4) + " : " + resultado.getDate(5));
+			}
+		} catch (SQLException e) {
+
+		}
 	}
 
 	public void crearCliente(Cliente cliente) {

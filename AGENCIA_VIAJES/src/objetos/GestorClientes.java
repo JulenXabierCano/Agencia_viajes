@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class GestorClientes {
 
-	public static void Run(Scanner scan) throws SQLException {
+	public static void Run(Scanner scan){
 
 		int opcion_menu = 0;
 		GestorBBDD gbd = new GestorBBDD();

@@ -66,18 +66,16 @@ public class FormularioDeDatos {
 	}
 
 	public static Reserva datosReserva(Scanner scan) {
-		SimpleDateFormat format = new SimpleDateFormat("dd/MM/YYYY");
-
 		Reserva reserva = new Reserva();
 
 		System.out.println("Introduzca ID de la habitacion:");
 		reserva.setId_habitacion(Integer.parseInt(scan.nextLine()));
 
 
-			System.out.println("Introduzca fecha de inicio de reserva (YYYY-DD-MM):");
+			System.out.println("Introduzca fecha de inicio de reserva (YYYY-MM-DD):");
 			reserva.setDesde(java.sql.Date.valueOf(scan.nextLine()));
 
-			System.out.println("Introduzca fecha de final de reserva (YYYY-DD-MM):");
+			System.out.println("Introduzca fecha de final de reserva (YYYY-MM-DD):");
 			reserva.setHasta(java.sql.Date.valueOf(scan.nextLine()));
 		
 		return reserva;

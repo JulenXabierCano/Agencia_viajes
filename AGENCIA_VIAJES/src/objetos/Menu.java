@@ -14,6 +14,7 @@ public class Menu {
 	public static final int RESERVAR = 1;
 	public static final int CANCELAR = 2;
 	public static final int VER_RESERVAS = 3;
+	public static final int VER_POR_DNI = 4;
 
 	public static final int ALTA_HOTEL = 1;
 	public static final int ALTA_HABITACION = 2;
@@ -46,6 +47,7 @@ public class Menu {
 		System.out.println(RESERVAR + ".	Realizar una reserva");
 		System.out.println(CANCELAR + ".	Cancelar reserva");
 		System.out.println(VER_RESERVAS + ".	Consultar reservas entre dos fechas");
+		System.out.println(VER_POR_DNI + ".	Consultar reservas de un cliente");
 		System.out.println(SALIR + ".	Salir");
 	}
 
