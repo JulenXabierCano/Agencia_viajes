@@ -6,7 +6,7 @@ public class GestorHoteles {
 
 	public static void Run(Scanner scan) {
 
-		Hotel hotel;
+		Hotel hotel = new Hotel();
 		int opcion_menu = 0;
 		FormularioDeDatos fdd = new FormularioDeDatos();
 		GestorBBDD gestorBBDD = new GestorBBDD();
