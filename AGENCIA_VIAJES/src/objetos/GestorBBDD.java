@@ -5,12 +5,12 @@ import java.util.Scanner;
 
 public class GestorBBDD extends Conector {
 
-	public void consultarReservas(java.sql.Date date1, java.sql.Date date2) {
+	public void consultarReservas(java.util.Date date1, java.util.Date date2) {
 		try {
 			
 			
 			PreparedStatement select = conector
-					.prepareStatement("SELECT * FROM reservas WHERE desde > '"+date1+"' AND hasta < '"+date2+"'");
+					.prepareStatement("SELECT * FROM reservas WHERE desde > '"+(java.sql.Date)date1+"' AND hasta < '"+(java.sql.Date)date2+"'");
 			
 			ResultSet resultado = select.executeQuery();
 			System.out.println(" ----- Reservas ----- ");

@@ -28,7 +28,8 @@ public class GestorReservas {
 				break;
 			case Menu.VER_RESERVAS:
 				bbdd.conectar();
-				bbdd.consultarReservas(FormularioDeDatos.conseguirFecha("Introduzca fecha de inicio de busqueda", scan),
+				bbdd.consultarReservas(
+						FormularioDeDatos.conseguirFecha("Introduzca fecha de inicio de busqueda", scan),
 						FormularioDeDatos.conseguirFecha("Introduzca fecha de inicio de busqueda", scan));
 				bbdd.cerrar();
 				break;

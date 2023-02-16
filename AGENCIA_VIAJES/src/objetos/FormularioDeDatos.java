@@ -109,7 +109,7 @@ public class FormularioDeDatos {
 		return cliente;
 	}
 
-	public static java.sql.Date conseguirFecha(String string,Scanner scan) {
+	public static java.util.Date conseguirFecha(String string,Scanner scan) {
 		System.out.println(string);
 		return Date.valueOf(scan.nextLine());
 	}
