@@ -2,13 +2,11 @@ package objetos;
 
 import java.util.Scanner;
 
-import principal.GestorAgencia;
-
 public class GestorHoteles {
 
 	public static void Run(Scanner scan) {
 
-		Hotel hotel = new Hotel();
+		Hotel hotel;
 		int opcion_menu = 0;
 		FormularioDeDatos fdd = new FormularioDeDatos();
 		GestorBBDD gestorBBDD = new GestorBBDD();

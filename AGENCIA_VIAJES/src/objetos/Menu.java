@@ -5,6 +5,7 @@ public class Menu {
 	public static final int GESTOR_CLIENTES = 1;
 	public static final int GESTOR_RESERVAS = 2;
 	public static final int GESTOR_HOTELYHABITACIONES = 3;
+	public static final int CONSULTA = 4;
 	public static final int SALIR = 0;
 
 	public static final int ALTA_CLIENTE = 1;
@@ -20,16 +21,16 @@ public class Menu {
 
 	public static final int CREAR_HABITACION = 1;
 	
-	public static final int APELLIDO = 1;
-	public static final int NOMBRE = 2;
+	public static final int NOMBRE = 1;
+	public static final int APELLIDO = 2;
 	public static final int CARACTER = 3;
-	public static final int MENUMENU = 4;
 
 	public static void menuPrincipal() {
 		System.out.println("Menú:");
 		System.out.println(GESTOR_CLIENTES + ".	Gestionar Clientes");
 		System.out.println(GESTOR_RESERVAS + ".	Gestionar Reservas");
 		System.out.println(GESTOR_HOTELYHABITACIONES + ".	Gestionar Hoteles y Habitaciones");
+		System.out.println(SALIR + ".	Salir");
 	}
 
 	public static void menuClientes() {
@@ -37,7 +38,7 @@ public class Menu {
 		System.out.println(ALTA_CLIENTE + ".	Alta a Cliente");
 		System.out.println(ELIMINAR_CLIENTE + ".	Baja a Cliente");
 		System.out.println(ACTUALIZAR_CLIENTE + ".	Actualizar información");
-		System.out.println(MENUMENU +".	Consultas");
+		System.out.println(CONSULTA +".	Consultas");
 		System.out.println(SALIR + ".	Salir");
 	}
 
@@ -57,9 +58,9 @@ public class Menu {
 	
 	public static void menuMenu() {
 		System.out.println("Menú:");
-		System.out.println(APELLIDO +".	Apellido");
-		System.out.println(NOMBRE +".	Nombre");
-		System.out.println(CARACTER +".	Caracter");
+		System.out.println(NOMBRE +".	Ordenar por Nombre");
+		System.out.println(APELLIDO +".	Ordenar por Apellido");
+		System.out.println(CARACTER +".	Examinar Caracteres");
 		System.out.println(SALIR +".	Salir");
 	}
 }
