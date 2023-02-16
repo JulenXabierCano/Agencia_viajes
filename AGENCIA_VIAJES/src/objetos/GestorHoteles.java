@@ -2,8 +2,6 @@ package objetos;
 
 import java.util.Scanner;
 
-import principal.GestorAgencia;
-
 public class GestorHoteles {
 
 	public static void Run(Scanner scan) {

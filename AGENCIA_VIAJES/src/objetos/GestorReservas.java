@@ -2,8 +2,6 @@ package objetos;
 
 import java.util.Scanner;
 
-import com.mysql.cj.x.protobuf.MysqlxCursor.FetchOrBuilder;
-
 public class GestorReservas {
 
 	public static void Run(Scanner scan) {
