@@ -2,9 +2,12 @@ package objetos;
 
 import java.util.Scanner;
 
+import com.mysql.cj.x.protobuf.MysqlxCursor.FetchOrBuilder;
+
 public class GestorReservas {
 
 	public static void Run(Scanner scan) {
+		GestorBBDD bbdd = new GestorBBDD();
 
 		int opcion_menu = 0;
 		do {
@@ -13,14 +16,22 @@ public class GestorReservas {
 
 			switch (opcion_menu) {
 			case Menu.RESERVAR:
-				GestorBBDD bbdd = new GestorBBDD();
 				bbdd.conectar();
 				bbdd.crearReserva(scan);
 				bbdd.cerrar();
 				break;
 
 			case Menu.CANCELAR:
-				
+				bbdd.conectar();
+				bbdd.cancelarReserva(scan);
+				bbdd.cerrar();
+				break;
+			case Menu.VER_RESERVAS:
+				bbdd.conectar();
+				bbdd.consultarReservas(
+						FormularioDeDatos.conseguirFecha("Introduzca fecha de inicio de busqueda", scan),
+						FormularioDeDatos.conseguirFecha("Introduzca fecha de inicio de busqueda", scan));
+				bbdd.cerrar();
 				break;
 			}
 		} while (opcion_menu != Menu.SALIR);

@@ -4,6 +4,25 @@ import java.sql.*;
 import java.util.Scanner;
 
 public class GestorBBDD extends Conector {
+
+	public void consultarReservas(java.util.Date date1, java.util.Date date2) {
+		try {
+			
+			
+			PreparedStatement select = conector
+					.prepareStatement("SELECT * FROM reservas WHERE desde > '"+(java.sql.Date)date1+"' AND hasta < '"+(java.sql.Date)date2+"'");
+			
+			ResultSet resultado = select.executeQuery();
+			System.out.println(" ----- Reservas ----- ");
+			while (resultado.next()) {
+				System.out.println(resultado.getInt(1) + " : " + resultado.getInt(2) + " : " + resultado.getInt(3) + " : "
+						+ resultado.getDate(4) + " : " + resultado.getDate(5));
+			}
+		} catch (SQLException e) {
+			System.out.println("Error: no se puede consultar \n" + e + "\n");
+		}
+	}
+
 	public void crearReserva(Scanner scan) {
 		try {
 			PreparedStatement select = conector.prepareStatement("SELECT * FROM clientes WHERE dni = ?");
@@ -11,14 +30,14 @@ public class GestorBBDD extends Conector {
 			String dni = scan.nextLine();
 			select.setString(1, dni);
 			boolean dniExiste = false;
-			
+
 			ResultSet resultado = select.executeQuery();
 			while (resultado.next()) {
-				if(resultado.getString(1).equals(dni)){
-					dniExiste=true;
+				if (resultado.getString(1).equals(dni)) {
+					dniExiste = true;
 				}
 			}
-			
+
 			if (dniExiste) {
 				System.out.println("Introduzca el hotel en el que se va a alojar");
 				String hotel = scan.nextLine();
@@ -53,6 +72,10 @@ public class GestorBBDD extends Conector {
 		} catch (SQLException e) {
 			System.out.println("Error: no se ha podido crear la reserva ");
 		}
+
+	}
+
+	public void cancelarReserva(Scanner scan) {
 
 	}
 
