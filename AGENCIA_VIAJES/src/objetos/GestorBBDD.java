@@ -8,16 +8,15 @@ public class GestorBBDD extends Conector {
 
 	public void consultarReservas(java.util.Date date1, java.util.Date date2) {
 		try {
-			
-			
-			PreparedStatement select = conector
-					.prepareStatement("SELECT * FROM reservas WHERE desde > '"+(java.sql.Date)date1+"' AND hasta < '"+(java.sql.Date)date2+"'");
-			
+
+			PreparedStatement select = conector.prepareStatement("SELECT * FROM reservas WHERE desde > '"
+					+ (java.sql.Date) date1 + "' AND hasta < '" + (java.sql.Date) date2 + "'");
+
 			ResultSet resultado = select.executeQuery();
 			System.out.println(" ----- Reservas ----- ");
 			while (resultado.next()) {
-				System.out.println(resultado.getInt(1) + " : " + resultado.getInt(2) + " : " + resultado.getInt(3) + " : "
-						+ resultado.getDate(4) + " : " + resultado.getDate(5));
+				System.out.println(resultado.getInt(1) + " : " + resultado.getInt(2) + " : " + resultado.getInt(3)
+						+ " : " + resultado.getDate(4) + " : " + resultado.getDate(5));
 			}
 		} catch (SQLException e) {
 			System.out.println("Error: no se puede consultar \n" + e + "\n");
@@ -49,13 +48,14 @@ public class GestorBBDD extends Conector {
 				String habitaciones = "-----Habitaciones-----\n";
 				while (resultado.next()) {
 
-					System.out.println(resultado.getInt(3) + " : " + resultado.getString(4) + "" + resultado.getDouble(5));
+					System.out.println(
+							resultado.getInt(3) + " : " + resultado.getString(4) + "" + resultado.getDouble(5));
 
 					System.out.println("Nº " + resultado.getInt(3) + " : " + resultado.getString(4) + " : "
 							+ resultado.getDouble(5) + "€" + " : ID " + resultado.getInt(1));
 
 				}
-				
+
 				PreparedStatement crearReserva = conector
 						.prepareStatement("INSERT INTO reservas (id_habitacion,dni,desde,hasta) VALUES (?,?,?,?)");
 				Reserva reserva = FormularioDeDatos.datosReserva(scan);
@@ -124,11 +124,11 @@ public class GestorBBDD extends Conector {
 					gestorBBDD.conectar();
 					gestorBBDD.crearHabitacion(FormularioDeDatos.datosHabitacion(scan), scan);
 					gestorBBDD.cerrar();
-					
-				System.out.println("¿Desea crear otra habitacion?");
+
+					System.out.println("¿Desea crear otra habitacion?");
 
 					break;
-					
+
 				case 2:
 					System.out.println("Volviendo al gestor de hoteles");
 				default:
@@ -147,8 +147,8 @@ public class GestorBBDD extends Conector {
 	public void crearHabitacion(Habitacion habitacion, Scanner scan) {
 		PreparedStatement crearHabitacion;
 		try {
-			crearHabitacion = conector
-					.prepareStatement("INSERT INTO habitaciones (id,id_hotel,numero,descripcion,precio) VALUES (?,?,?,?,?)");
+			crearHabitacion = conector.prepareStatement(
+					"INSERT INTO habitaciones (id,id_hotel,numero,descripcion,precio) VALUES (?,?,?,?,?)");
 			crearHabitacion.setInt(1, habitacion.getId());
 			crearHabitacion.setInt(2, habitacion.getId_hotel());
 			crearHabitacion.setString(3, habitacion.getNumero());
@@ -160,13 +160,13 @@ public class GestorBBDD extends Conector {
 			System.out.println("Error al crear hotel " + e);
 		}
 	}
-	
+
 	public void eliminarCliente(Cliente cliente) {
 		PreparedStatement eliminarCliente;
 		try {
 			eliminarCliente = conector.prepareStatement("DELETE FROM clientes WHERE dni = ?");
 			eliminarCliente.setString(1, cliente.getDni());
-			
+
 			eliminarCliente.execute();
 		} catch (SQLException e) {
 			System.out.println("Error al eliminar el cliente" + e);
@@ -176,27 +176,27 @@ public class GestorBBDD extends Conector {
 	public void actualizarCliente(Cliente cliente) {
 		PreparedStatement actualizarCliente;
 		try {
-			actualizarCliente = conector.prepareStatement("UPDATE clientes SET nombre=?, apellidos=?, direccion=?, localidad=? WHEREdni=?");
+			actualizarCliente = conector
+					.prepareStatement("UPDATE clientes SET nombre=?, apellidos=?, direccion=?, localidad=? WHEREdni=?");
 			actualizarCliente.setString(1, cliente.getNombre());
 			actualizarCliente.setString(2, cliente.getApellidos());
 			actualizarCliente.setString(3, cliente.getDireccion());
 			actualizarCliente.setString(4, cliente.getLocalidad());
 			actualizarCliente.setString(5, cliente.getDni());
-			
+
 			actualizarCliente.execute();
 		} catch (SQLException e) {
-			System.out.println("Error al actualizar los datos del cliente" + e);	
+			System.out.println("Error al actualizar los datos del cliente" + e);
 		}
 	}
 
-	public void contiene(ArrayList<Cliente> clientes,String cadena) {
-		for (Cliente cliente : clientes) {
-			if(cliente.getNombre().contains(cadena)||cliente.getApellidos().contains(cadena)) {
-				System.out.println(cliente);
+	public void contiene(ArrayList<Cliente> clientes, String cadena) {
+		for (int i = 0; i < clientes.size(); i++) {
+			if (clientes.get(i).getNombre().contains(cadena) || clientes.get(i).getApellidos().contains(cadena)) {
+				System.out.println(clientes.get(i));
 			}
-			
 		}
-		
+
 	}
 
 }

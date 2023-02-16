@@ -51,8 +51,8 @@ public class GestorClientes {
 				case Menu.CARACTER:
 					gbd.conectar();
 					ArrayList<Cliente> clientes = new ArrayList<Cliente>();
-					gbd.contiene(clientes,FormularioDeDatos.consultaCadena(scan));
 					gbd.descargarDatos(clientes);
+					gbd.contiene(clientes,FormularioDeDatos.consultaCadena(scan));
 					gbd.cerrar();
 					break;
 				case Menu.SALIR:
