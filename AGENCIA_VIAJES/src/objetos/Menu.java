@@ -19,6 +19,11 @@ public class Menu {
 	public static final int ALTA_HABITACION = 2;
 
 	public static final int CREAR_HABITACION = 1;
+	
+	public static final int APELLIDO = 1;
+	public static final int NOMBRE = 2;
+	public static final int CARACTER = 3;
+	public static final int MENUMENU = 4;
 
 	public static void menuPrincipal() {
 		System.out.println("Menú:");
@@ -32,6 +37,7 @@ public class Menu {
 		System.out.println(ALTA_CLIENTE + ".	Alta a Cliente");
 		System.out.println(ELIMINAR_CLIENTE + ".	Baja a Cliente");
 		System.out.println(ACTUALIZAR_CLIENTE + ".	Actualizar información");
+		System.out.println(MENUMENU +".	Consultas");
 		System.out.println(SALIR + ".	Salir");
 	}
 
@@ -47,5 +53,12 @@ public class Menu {
 		System.out.println("Menú:");
 		System.out.println(ALTA_HOTEL + ".	Dar de Alta un Hotel");
 		System.out.println(SALIR + ".	Salir");
+	}
+	
+	public static void menuMenu() {
+		System.out.println(APELLIDO +".	Apellido");
+		System.out.println(NOMBRE +".	Nombre");
+		System.out.println(CARACTER +".	Caracter");
+		System.out.println(SALIR +".	Salir");
 	}
 }
