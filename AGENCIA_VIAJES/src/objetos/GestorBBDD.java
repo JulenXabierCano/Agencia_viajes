@@ -1,6 +1,7 @@
 package objetos;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class GestorBBDD extends Conector {
@@ -186,6 +187,16 @@ public class GestorBBDD extends Conector {
 		} catch (SQLException e) {
 			System.out.println("Error al actualizar los datos del cliente" + e);	
 		}
+	}
+
+	public void contiene(ArrayList<Cliente> clientes,String cadena) {
+		for (Cliente cliente : clientes) {
+			if(cliente.getNombre().contains(cadena)||cliente.getApellidos().contains(cadena)) {
+				System.out.println(cliente);
+			}
+			
+		}
+		
 	}
 
 }

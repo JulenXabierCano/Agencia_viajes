@@ -51,6 +51,7 @@ public class GestorClientes {
 				case Menu.CARACTER:
 					gbd.conectar();
 					ArrayList<Cliente> clientes = new ArrayList<Cliente>();
+					gbd.contiene(clientes,FormularioDeDatos.consultaCadena(scan));
 					gbd.descargarDatos(clientes);
 					gbd.cerrar();
 					break;
@@ -71,7 +72,7 @@ public class GestorClientes {
 		} while (opcion_menu != Menu.SALIR);
 	}
 	
-	private void contiene(ArrayList<Cliente> clientes,String cadena) {
+	public void contiene(ArrayList<Cliente> clientes,String cadena) {
 		for (Cliente cliente : clientes) {
 			if(cliente.getNombre().contains(cadena)||cliente.getApellidos().contains(cadena)) {
 				System.out.println(cliente);
