@@ -19,7 +19,6 @@ public class Menu {
 
 	public static final int ALTA_HOTEL = 1;
 	public static final int ELIMINAR_HOTEL = 2;
-	public static final int VER_HOTELES = 3;
 
 	public static final int CREAR_HABITACION = 1;
 	

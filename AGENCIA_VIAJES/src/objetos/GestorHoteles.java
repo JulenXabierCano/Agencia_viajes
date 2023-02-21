@@ -6,9 +6,8 @@ public class GestorHoteles {
 
 	public static void Run(Scanner scan) {
 
-		Hotel hotel = new Hotel();
+		
 		int opcion_menu = 0;
-		FormularioDeDatos fdd = new FormularioDeDatos();
 		GestorBBDD gestorBBDD = new GestorBBDD();
 
 		do {
@@ -30,7 +29,7 @@ public class GestorHoteles {
 			case Menu.ELIMINAR_HOTEL:
 				
 				gestorBBDD.conectar();
-				
+				gestorBBDD.eliminarHotel(FormularioDeDatos.datosHoteles(scan));
 				gestorBBDD.cerrar();
 				
 			default:
