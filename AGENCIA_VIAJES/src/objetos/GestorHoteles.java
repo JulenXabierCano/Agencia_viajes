@@ -26,7 +26,7 @@ public class GestorHoteles {
 				gestorBBDD.eliminarHotel(FormularioDeDatos.eliminarHotel(scan));
 				gestorBBDD.cerrar();
 				break;
-				
+
 			default:
 				System.out.println("Opcion no existente");
 				break;

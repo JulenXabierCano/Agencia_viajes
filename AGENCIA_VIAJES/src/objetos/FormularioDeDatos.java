@@ -24,15 +24,16 @@ public class FormularioDeDatos {
 
 		return hotel;
 	}
-	
+
 	public static Hotel eliminarHotel(Scanner scan) {
 		Hotel hotel = new Hotel();
-		
+
 		System.out.println("Introduce el cif del hotel a eliminar");
 		hotel.setCif(scan.nextLine());
-		
+
 		return hotel;
 	}
+
 	public static Habitacion datosHabitacion(Scanner scan) {
 		Habitacion habitacion = new Habitacion();
 
@@ -53,18 +54,22 @@ public class FormularioDeDatos {
 
 		return habitacion;
 	}
-	
+
 	public static Cliente datosCliente(Scanner scan) {
 		Cliente cliente = new Cliente();
 
 		System.out.println("Introduce el DNI");
 		cliente.setDni(scan.nextLine());
+
 		System.out.println("Introduce nombre del Cliente");
 		cliente.setNombre(scan.nextLine());
+
 		System.out.println("Introduzca los Apellidos del registrado");
 		cliente.setApellidos(scan.nextLine());
+
 		System.out.println("Introduce direccion del Cliente");
 		cliente.setDireccion(scan.nextLine());
+
 		System.out.println("Introduce Localidad en la cual reside");
 		cliente.setLocalidad(scan.nextLine());
 
@@ -77,53 +82,56 @@ public class FormularioDeDatos {
 		System.out.println("Introduzca ID de la habitacion:");
 		reserva.setId_habitacion(Integer.parseInt(scan.nextLine()));
 
+		System.out.println("Introduzca fecha de inicio de reserva (YYYY-MM-DD):");
+		reserva.setDesde(java.sql.Date.valueOf(scan.nextLine()));
 
-			System.out.println("Introduzca fecha de inicio de reserva (YYYY-MM-DD):");
-			reserva.setDesde(java.sql.Date.valueOf(scan.nextLine()));
+		System.out.println("Introduzca fecha de final de reserva (YYYY-MM-DD):");
+		reserva.setHasta(java.sql.Date.valueOf(scan.nextLine()));
 
-			System.out.println("Introduzca fecha de final de reserva (YYYY-MM-DD):");
-			reserva.setHasta(java.sql.Date.valueOf(scan.nextLine()));
-		
 		return reserva;
 	}
 
 	public static Cliente eliminarCliente(Scanner scan) {
 		Cliente cliente = new Cliente();
-		
+
 		System.out.println("Introduce el DNI del usuario a eliminar");
 		cliente.setDni(scan.nextLine());
-		
+
 		return cliente;
 	}
 
 	public static Cliente actualizarCliente(Scanner scan) {
 		Cliente cliente = new Cliente();
-		
+
 		System.out.println("Introduce el DNI del cliente que se desea actualizar");
 		cliente.setDni(scan.nextLine());
+
 		System.out.println("Introduce el nombre del Cliente");
 		cliente.setNombre(scan.nextLine());
+
 		System.out.println("Introduce Apellidos del Cliente");
 		cliente.setApellidos(scan.nextLine());
+
 		System.out.println("Introduce direccion del Cliente");
 		cliente.setDireccion(scan.nextLine());
+
 		System.out.println("Introduce localidad en la que reside el Cliente");
 		cliente.setLocalidad(scan.nextLine());
-		
+
 		return cliente;
 	}
 
-	public static java.util.Date conseguirFecha(String string,Scanner scan) {
+	public static java.util.Date conseguirFecha(String string, Scanner scan) {
 		System.out.println(string);
 		return Date.valueOf(scan.nextLine());
 	}
-	
+
 	public static String consultaCadena(Scanner scan) {
 		String cadena;
-		
+
 		System.out.println("Introduce la cadena de caracteres a buscar");
 		cadena = scan.nextLine();
-		
+
 		return cadena;
 	}
 }
