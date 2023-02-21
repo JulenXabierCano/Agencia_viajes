@@ -28,8 +28,8 @@ public class FormularioDeDatos {
 	public static Hotel eliminarHotel(Scanner scan) {
 		Hotel hotel = new Hotel();
 		
-		System.out.println("Introduce el Id del hotel a eliminar");
-		hotel.setId(Integer.parseInt(scan.nextLine()));
+		System.out.println("Introduce el cif del hotel a eliminar");
+		hotel.setCif(scan.nextLine());
 		
 		return hotel;
 	}
