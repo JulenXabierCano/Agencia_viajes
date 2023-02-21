@@ -200,7 +200,7 @@ public class GestorBBDD extends Conector {
 	public void eliminarHotel(Hotel hotel) {
 		PreparedStatement eliminarHotel;
 		try {
-			eliminarHotel = conector.prepareStatement("DELETE FROM hoteles WHERE dni = ?");
+			eliminarHotel = conector.prepareStatement("DELETE FROM hoteles WHERE id = ?");
 			eliminarHotel.setInt(1, hotel.getId());
 
 			eliminarHotel.execute();
