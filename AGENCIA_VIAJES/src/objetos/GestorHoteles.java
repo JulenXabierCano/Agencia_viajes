@@ -26,6 +26,17 @@ public class GestorHoteles {
 				gestorBBDD.conectar();
 				gestorBBDD.crearHotel(FormularioDeDatos.datosHoteles(scan), scan);
 				gestorBBDD.cerrar();
+				
+				break;
+				
+			case Menu.ELIMINAR_HOTEL:
+				
+				gestorBBDD.conectar();
+				
+				gestorBBDD.cerrar();
+				
+			default:
+				System.out.println("Opcion no existente");
 
 			}
 

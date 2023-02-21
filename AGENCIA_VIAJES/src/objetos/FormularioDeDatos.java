@@ -26,6 +26,15 @@ public class FormularioDeDatos {
 
 		return hotel;
 	}
+	
+	public static Hotel eliminarHotel(Scanner scan) {
+		Hotel hotel = new Hotel();
+		
+		System.out.println("Introduce el Id del hotel a eliminar");
+		hotel.setId(Integer.parseInt(scan.nextLine()));
+		
+		return hotel;
+	}
 
 	public static Habitacion datosHabitacion(Scanner scan) {
 		Habitacion habitacion = new Habitacion();
