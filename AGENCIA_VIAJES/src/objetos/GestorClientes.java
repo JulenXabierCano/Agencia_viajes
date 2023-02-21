@@ -47,13 +47,23 @@ public class GestorClientes {
 				case Menu.NOMBRE:
 					gbd.conectar();
 					gbd.descargarDatos(clientes);
-					comparaNombre(clientes);
+					try {
+						comparaNombre(clientes);
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					gbd.cerrar();
 					break;
 				case Menu.APELLIDO:
 					gbd.conectar();
 					gbd.descargarDatos(clientes);
-					comparaApellido(clientes);
+					try {
+						comparaApellido(clientes);
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					gbd.cerrar();
 					break;
 				case Menu.CARACTER:
