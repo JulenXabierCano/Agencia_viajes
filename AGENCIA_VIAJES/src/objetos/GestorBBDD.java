@@ -83,10 +83,8 @@ public class GestorBBDD extends Conector {
 
 			ResultSet resultado = delete.executeQuery();
 			System.out.println(" ----- RESERVAS ----- ");
-			while (resultado.next()) {
-				System.out.println(resultado.getInt(1) + " : " + resultado.getInt(2) + " : " + resultado.getString(3)
-						+ " : " + resultado.getDate(4) + " : " + resultado.getDate(5));
-			}
+			
+			printResult(resultado);
 
 			delete = conector.prepareStatement("DELETE FROM reservas WHERE id = ?");
 
@@ -97,6 +95,17 @@ public class GestorBBDD extends Conector {
 		} catch (SQLException e) {
 			System.out.println("ERROR: No se ha podido cancelar la reserva:\n" + e);
 		}
+	}
+
+	private void printResult(ResultSet resultado) {
+		try {
+			while (resultado.next()) {
+				System.out.println(resultado.getInt(1) + " : " + resultado.getInt(2) + " : " + resultado.getString(3)
+						+ " : " + resultado.getDate(4) + " : " + resultado.getDate(5));
+			}
+		} catch (SQLException e) {
+		}
+		
 	}
 
 	public void comprobarReservasCliente(Scanner scan) {
