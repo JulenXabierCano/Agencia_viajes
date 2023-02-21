@@ -202,7 +202,7 @@ public class GestorBBDD extends Conector {
 
 			crearHabitacion.execute();
 		} catch (SQLException e) {
-			System.out.println("Error al crear hotel " + e);
+			System.out.println("Error al crear la habitacion " + e);
 		}
 	}
 	
@@ -214,7 +214,7 @@ public class GestorBBDD extends Conector {
 
 			eliminarHotel.execute();
 		} catch (SQLException e) {
-			System.out.println("Error al eliminar el cliente" + e);
+			System.out.println("Error al eliminar el hotel" + e);
 		}
 	}
 
