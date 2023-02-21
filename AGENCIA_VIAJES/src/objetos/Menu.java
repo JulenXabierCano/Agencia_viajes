@@ -55,7 +55,7 @@ public class Menu {
 	public static void menuHotelHabitaciones() {
 		System.out.println("Menú:");
 		System.out.println(ALTA_HOTEL + ".	Dar de Alta un Hotel");
-		System.out.println("");
+		System.out.println(ELIMINAR_HOTEL + ". Dar de baja un hotel");
 		System.out.println(SALIR + ".	Salir");
 	}
 	
