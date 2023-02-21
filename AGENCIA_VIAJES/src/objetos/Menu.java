@@ -19,7 +19,6 @@ public class Menu {
 
 	public static final int ALTA_HOTEL = 1;
 	public static final int ELIMINAR_HOTEL = 2;
-	public static final int VER_HOTELES = 3;
 
 	public static final int CREAR_HABITACION = 1;
 	
@@ -56,7 +55,7 @@ public class Menu {
 	public static void menuHotelHabitaciones() {
 		System.out.println("Menú:");
 		System.out.println(ALTA_HOTEL + ".	Dar de Alta un Hotel");
-		System.out.println("");
+		System.out.println(ELIMINAR_HOTEL + ". Dar de baja un hotel");
 		System.out.println(SALIR + ".	Salir");
 	}
 	

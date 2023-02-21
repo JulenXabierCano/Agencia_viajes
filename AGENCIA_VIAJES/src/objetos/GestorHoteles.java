@@ -28,7 +28,7 @@ public class GestorHoteles {
 			case Menu.ELIMINAR_HOTEL:
 				
 				gestorBBDD.conectar();
-				
+				gestorBBDD.eliminarHotel(FormularioDeDatos.datosHoteles(scan));
 				gestorBBDD.cerrar();
 				
 			default:

@@ -33,7 +33,6 @@ public class FormularioDeDatos {
 		
 		return hotel;
 	}
-
 	public static Habitacion datosHabitacion(Scanner scan) {
 		Habitacion habitacion = new Habitacion();
 
