@@ -1,13 +1,13 @@
 package objetos;
 
-import java.lang.reflect.Array;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class GestorClientes {
 
-	public static void Run(Scanner scan) throws SQLException {
+	public static void Run(Scanner scan){
 
 		int opcion_menu = 0;
 		GestorBBDD gbd = new GestorBBDD();
@@ -37,27 +37,43 @@ public class GestorClientes {
 				gbd.cerrar();
 				break;
 				
-			case Menu.MENUMENU:
+			case Menu.CONSULTA:
 				do {
 				Menu.menuMenu();
 				System.out.println("Selecciona la siguiente accion a realizar");
 				opcion_menu = Integer.parseInt(scan.nextLine());
+				ArrayList<Cliente> clientes = new ArrayList<Cliente>();
 				switch(opcion_menu) {
-				case Menu.APELLIDO:
-					
-					break;
 				case Menu.NOMBRE:
+					gbd.conectar();
+					gbd.descargarDatos(clientes);
+					try {
+						comparaNombre(clientes);
+						gbd.cerrar();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+					break;
+				case Menu.APELLIDO:
+					gbd.conectar();
+					gbd.descargarDatos(clientes);
+					try {
+						comparaApellido(clientes);
+						gbd.cerrar();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
 					break;
 				case Menu.CARACTER:
 					gbd.conectar();
-					ArrayList<Cliente> clientes = new ArrayList<Cliente>();
-					gbd.contiene(clientes,FormularioDeDatos.consultaCadena(scan));
 					gbd.descargarDatos(clientes);
+					gbd.contiene(clientes,FormularioDeDatos.consultaCadena(scan));
 					gbd.cerrar();
 					break;
 				case Menu.SALIR:
 					break;
 					default:
+						System.out.println("Opción inexistente");
 						break;
 				}
 				}while(opcion_menu!=Menu.SALIR);
@@ -77,8 +93,22 @@ public class GestorClientes {
 			if(cliente.getNombre().contains(cadena)||cliente.getApellidos().contains(cadena)) {
 				System.out.println(cliente);
 			}
-			
 		}
+	}
+	
+	public static void comparaNombre(ArrayList<Cliente> clientes) throws SQLException {
+		Collections.sort(clientes, new ComparadorNombre());
 		
+		for(Cliente c : clientes) {
+			System.out.println(c.getNombre());
+		}
+	}
+	
+	public static void comparaApellido(ArrayList<Cliente> clientes) throws SQLException {
+		Collections.sort(clientes, new ComparadorApellido());
+		
+		for(Cliente c : clientes) {
+			System.out.println(c.getApellidos());
+		}
 	}
 }

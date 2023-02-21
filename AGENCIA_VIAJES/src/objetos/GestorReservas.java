@@ -2,8 +2,6 @@ package objetos;
 
 import java.util.Scanner;
 
-import com.mysql.cj.x.protobuf.MysqlxCursor.FetchOrBuilder;
-
 public class GestorReservas {
 
 	public static void Run(Scanner scan) {
@@ -31,6 +29,11 @@ public class GestorReservas {
 				bbdd.consultarReservas(
 						FormularioDeDatos.conseguirFecha("Introduzca fecha de inicio de busqueda", scan),
 						FormularioDeDatos.conseguirFecha("Introduzca fecha de inicio de busqueda", scan));
+				bbdd.cerrar();
+				break;
+			case Menu.VER_POR_DNI:
+				bbdd.conectar();
+				bbdd.comprobarReservasCliente(scan);
 				bbdd.cerrar();
 				break;
 			}

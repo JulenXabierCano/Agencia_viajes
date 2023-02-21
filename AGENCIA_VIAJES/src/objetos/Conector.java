@@ -27,25 +27,24 @@ public class Conector {
 			System.out.println("Error: No se ha podido cerrar la conexion");
 		}
 	}
-	
-	public void descargarDatos(ArrayList<Cliente> clientes) throws SQLException {
-		conectar();
-		String sentenciaSelect = "SELECT * FROM clientes";
-		Statement st = conector.createStatement();
-		ResultSet resultado = st.executeQuery(sentenciaSelect);
-		Cliente cliente = new Cliente();
+
+	public void descargarDatos(ArrayList<Cliente> clientes) {
 		try {
-			while(resultado.next()) {
+			String sentenciaSelect = "SELECT * FROM clientes";
+			Statement st = conector.createStatement();
+			ResultSet resultado = st.executeQuery(sentenciaSelect);
+			while (resultado.next()) {
+				Cliente cliente = new Cliente();
 				cliente.setDni(resultado.getString("dni"));
 				cliente.setNombre((resultado.getString("nombre")));
 				cliente.setApellidos((resultado.getString("apellidos")));
 				cliente.setDireccion(resultado.getString("direccion"));
 				cliente.setLocalidad(resultado.getString("localidad"));
-				
+
 				clientes.add(cliente);
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			System.out.println("ERROR: No se han podido descargar los datos:\n" + e);
 		}
 	}
 }
